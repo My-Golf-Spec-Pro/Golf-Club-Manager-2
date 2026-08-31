@@ -6,503 +6,514 @@
 <title>Golf Club Manager</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
-    margin:0;
-    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
-    background:#f4f6f5;
-    color:#222;
+* {
+    box-sizing: border-box;
 }
 
-header{
-    background:#126b3a;
-    color:white;
-    padding:14px 18px;
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    background: #f4f6f5;
+    color: #222;
 }
 
-header h1{
-    margin:0;
-    font-size:21px;
+header {
+    background: #126b3a;
+    color: white;
+    padding: 14px 18px;
 }
 
-header p{
-    margin:3px 0 0;
-    font-size:12px;
-    opacity:.85;
+header h1 {
+    margin: 0;
+    font-size: 21px;
 }
 
-.container{
-    max-width:1400px;
-    margin:auto;
-    padding:10px;
+header p {
+    margin: 3px 0 0;
+    font-size: 12px;
+    opacity: .85;
 }
 
-.toolbar{
-    display:flex;
-    gap:7px;
-    margin-bottom:10px;
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 12px;
 }
 
-.search{
-    flex:1;
-    min-width:0;
+.toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
 }
 
-input,select,textarea,button{
-    font:inherit;
+.search {
+    flex: 1;
+    min-width: 0;
 }
 
-input,select,textarea{
-    width:100%;
-    padding:8px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    background:white;
+input,
+select,
+textarea,
+button {
+    font: inherit;
 }
 
-button{
-    border:0;
-    border-radius:8px;
-    padding:8px 12px;
-    cursor:pointer;
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
 }
 
-.primary{
-    background:#126b3a;
-    color:white;
+button {
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 13px;
+    cursor: pointer;
 }
 
-.secondary{
-    background:#e5e9e7;
+.primary {
+    background: #126b3a;
+    color: white;
 }
 
-.danger{
-    background:#d9363e;
-    color:white;
+.secondary {
+    background: #e5e9e7;
+}
+
+.danger {
+    background: #d9363e;
+    color: white;
 }
 
 /* =========================
    一覧
 ========================= */
 
-.club-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:8px;
+.club-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 9px;
 }
 
-.club-card{
-    background:white;
-    border-radius:10px;
-    overflow:hidden;
-    box-shadow:0 2px 7px rgba(0,0,0,.08);
-    cursor:pointer;
-    transition:.15s;
+.club-card {
+    background: white;
+    border-radius: 11px;
+    overflow: hidden;
+    box-shadow: 0 2px 7px rgba(0,0,0,.08);
+    cursor: pointer;
 }
 
-.club-card:active{
-    transform:scale(.98);
+.club-photo {
+    width: 100%;
+    height: 105px;
+    object-fit: cover;
+    display: block;
 }
 
-.club-photo{
-    width:100%;
-    height:105px;
-    object-fit:cover;
-    background:#e9eceb;
+.no-photo {
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9eceb;
+    color: #777;
+    font-size: 30px;
 }
 
-.no-photo{
-    height:105px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#e9eceb;
-    color:#777;
-    font-size:30px;
+.card-body {
+    padding: 8px;
 }
 
-.card-body{
-    padding:8px;
+.club-type {
+    color: #126b3a;
+    font-size: 18px;
+    font-weight: 800;
 }
 
-.club-type{
-    color:#126b3a;
-    font-size:18px;
-    font-weight:800;
+.maker {
+    color: #777;
+    font-size: 11px;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.maker{
-    color:#777;
-    font-size:11px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+.name {
+    font-size: 13px;
+    font-weight: 700;
+    margin: 3px 0 7px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.name{
-    font-size:13px;
-    font-weight:700;
-    margin:2px 0 6px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+.distance {
+    display: flex;
+    gap: 4px;
 }
 
-.distance{
-    display:flex;
-    gap:4px;
+.distance-box {
+    flex: 1;
+    background: #edf7f1;
+    padding: 5px;
+    border-radius: 6px;
+    font-size: 10px;
 }
 
-.distance-box{
-    flex:1;
-    background:#edf7f1;
-    padding:5px;
-    border-radius:6px;
+.distance-box small {
+    display: block;
+    color: #777;
+    font-size: 8px;
 }
 
-.distance-box small{
-    display:block;
-    color:#777;
-    font-size:9px;
+.distance-box strong {
+    display: block;
+    margin-top: 1px;
+    font-size: 11px;
 }
 
-.distance-box strong{
-    display:block;
-    margin-top:1px;
-    font-size:12px;
+.specs {
+    margin-top: 6px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
 }
 
-.empty{
-    text-align:center;
-    padding:50px 20px;
-    color:#777;
-    grid-column:1/-1;
+.spec {
+    background: #f5f6f6;
+    padding: 4px;
+    border-radius: 5px;
+    min-width: 0;
 }
 
-/* =========================
-   モーダル
-========================= */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.5);
-    z-index:10;
-    overflow-y:auto;
-    padding:10px;
+.spec small {
+    display: block;
+    color: #777;
+    font-size: 7px;
 }
 
-.modal-content{
-    max-width:700px;
-    margin:10px auto;
-    background:white;
-    border-radius:16px;
-    padding:16px;
+.spec strong {
+    display: block;
+    font-size: 9px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.modal-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:12px;
-}
-
-.modal-header h2{
-    margin:0;
-    font-size:20px;
-}
-
-.close-button{
-    width:38px;
-    height:38px;
-    padding:0;
-    border-radius:50%;
-    font-size:22px;
-    background:#eee;
+.empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #777;
 }
 
 /* =========================
-   詳細
+   詳細画面
 ========================= */
 
-.detail-photo{
-    width:100%;
-    max-height:330px;
-    object-fit:contain;
-    background:#eee;
-    border-radius:10px;
-    margin-bottom:12px;
+.detail-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 20;
+    overflow-y: auto;
+    padding: 10px;
 }
 
-.detail-no-photo{
-    height:180px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#eee;
-    border-radius:10px;
-    font-size:60px;
-    color:#777;
-    margin-bottom:12px;
+.detail-content {
+    max-width: 700px;
+    margin: 15px auto;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
 }
 
-.detail-type{
-    font-size:28px;
-    font-weight:800;
-    color:#126b3a;
+.detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eee;
 }
 
-.detail-maker{
-    color:#777;
-    margin-top:2px;
+.detail-header h2 {
+    margin: 0;
+    font-size: 20px;
 }
 
-.detail-name{
-    font-size:22px;
-    font-weight:700;
-    margin:3px 0 15px;
+.detail-photo {
+    width: 100%;
+    max-height: 360px;
+    object-fit: contain;
+    background: #eee;
 }
 
-.detail-distance{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-    margin-bottom:15px;
+.detail-body {
+    padding: 16px;
 }
 
-.detail-distance-box{
-    background:#edf7f1;
-    border-radius:10px;
-    padding:12px;
+.detail-title {
+    color: #126b3a;
+    font-size: 30px;
+    font-weight: 900;
 }
 
-.detail-distance-box small{
-    display:block;
-    color:#777;
+.detail-maker {
+    color: #777;
+    margin-top: 2px;
 }
 
-.detail-distance-box strong{
-    display:block;
-    font-size:22px;
-    margin-top:3px;
+.detail-name {
+    font-size: 21px;
+    font-weight: 700;
+    margin: 5px 0 15px;
 }
 
-.detail-specs{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
+.big-distance {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 15px;
 }
 
-.detail-spec{
-    background:#f5f6f6;
-    padding:10px;
-    border-radius:8px;
+.big-distance-box {
+    background: #edf7f1;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
 }
 
-.detail-spec small{
-    display:block;
-    color:#777;
-    font-size:11px;
+.big-distance-box small {
+    color: #777;
 }
 
-.detail-spec strong{
-    display:block;
-    margin-top:2px;
+.big-distance-box strong {
+    display: block;
+    font-size: 20px;
+    margin-top: 3px;
 }
 
-.detail-memo{
-    margin-top:12px;
-    padding:12px;
-    background:#f5f6f6;
-    border-radius:8px;
-    white-space:pre-wrap;
+.detail-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+}
+
+.detail-spec {
+    background: #f5f6f6;
+    padding: 9px;
+    border-radius: 8px;
+}
+
+.detail-spec small {
+    display: block;
+    color: #777;
+    font-size: 11px;
+}
+
+.detail-spec strong {
+    display: block;
+    margin-top: 2px;
+}
+
+.detail-memo {
+    margin-top: 14px;
+    padding: 12px;
+    background: #fffbea;
+    border-radius: 9px;
+    white-space: pre-wrap;
 }
 
 /* =========================
-   フォーム
+   編集画面
 ========================= */
 
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:9px;
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 30;
+    overflow-y: auto;
+    padding: 10px;
 }
 
-.form-group{
-    margin-bottom:7px;
+.modal-content {
+    max-width: 700px;
+    margin: 15px auto;
+    background: white;
+    border-radius: 18px;
+    padding: 16px;
 }
 
-.form-group label{
-    display:block;
-    font-size:12px;
-    color:#555;
-    margin-bottom:3px;
+.modal h2 {
+    margin-top: 0;
 }
 
-.full{
-    grid-column:1/-1;
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
-.preview{
-    width:100%;
-    max-height:220px;
-    object-fit:contain;
-    border-radius:10px;
-    margin-top:8px;
+.form-group {
+    margin-bottom: 8px;
 }
 
-.modal-actions{
-    margin-top:14px;
+.form-group label {
+    display: block;
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 4px;
 }
 
-.modal-actions .save-button{
-    width:100%;
-    font-size:16px;
-    padding:12px;
+.full {
+    grid-column: 1 / -1;
 }
 
-.delete-area{
-    margin-top:25px;
-    padding-top:15px;
-    border-top:1px solid #ddd;
+.preview {
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+    border-radius: 9px;
+    margin-top: 8px;
 }
 
-.delete-area button{
-    width:100%;
+.modal-actions {
+    margin-top: 18px;
+}
+
+.modal-actions button {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.delete-area {
+    border-top: 1px solid #eee;
+    margin-top: 18px;
+    padding-top: 18px;
 }
 
 /* =========================
-   数字キー
+   数字選択パネル
 ========================= */
 
-.number-picker{
-    position:relative;
+.number-picker {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 50;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
 }
 
-.number-display{
-    width:100%;
-    min-height:42px;
-    background:white;
-    border:1px solid #ccc;
-    border-radius:8px;
-    padding:9px 42px 9px 11px;
-    cursor:pointer;
+.number-panel {
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    padding: 15px;
 }
 
-.number-display.placeholder{
-    color:#999;
+.number-title {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 12px;
 }
 
-.picker-clear{
-    position:absolute;
-    right:5px;
-    top:5px;
-    width:32px;
-    height:32px;
-    padding:0;
-    border-radius:6px;
-    background:#eee;
-    font-size:16px;
+.number-display {
+    background: #f1f3f2;
+    border-radius: 10px;
+    padding: 13px;
+    text-align: right;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 
-.keypad{
-    display:none;
-    margin-top:6px;
-    background:#f1f3f2;
-    border-radius:10px;
-    padding:7px;
-    grid-template-columns:repeat(3,1fr);
-    gap:5px;
+.number-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
 }
 
-.keypad.open{
-    display:grid;
+.number-grid button {
+    background: #edf0ef;
+    font-size: 20px;
+    padding: 13px;
 }
 
-.keypad button{
-    background:white;
-    min-height:42px;
-    border:1px solid #ddd;
-    font-weight:600;
+.number-grid button.ok {
+    background: #126b3a;
+    color: white;
 }
 
-.keypad button:active{
-    background:#dfeee6;
-}
-
-.unit-title{
-    font-size:10px;
-    color:#777;
-    text-align:center;
-    grid-column:1/-1;
-    padding:2px;
+.number-grid button.cancel {
+    background: #ddd;
 }
 
 /* =========================
-   レスポンシブ
+   スマホ
 ========================= */
 
-@media(max-width:1100px){
-    .club-grid{
-        grid-template-columns:repeat(4,1fr);
+@media (max-width: 900px) {
+    .club-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
-@media(max-width:800px){
-    .club-grid{
-        grid-template-columns:repeat(3,1fr);
+@media (max-width: 600px) {
+
+    header {
+        padding: 11px 14px;
+    }
+
+    header h1 {
+        font-size: 19px;
+    }
+
+    .container {
+        padding: 8px;
+    }
+
+    .club-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 7px;
     }
 
     .club-photo,
-    .no-photo{
-        height:100px;
-    }
-}
-
-@media(max-width:600px){
-    .container{
-        padding:7px;
+    .no-photo {
+        height: 85px;
     }
 
-    .club-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:7px;
+    .club-type {
+        font-size: 17px;
     }
 
-    .club-photo,
-    .no-photo{
-        height:90px;
+    .card-body {
+        padding: 7px;
     }
 
-    .card-body{
-        padding:7px;
+    .specs {
+        display: none;
     }
 
-    .club-type{
-        font-size:17px;
+    .form-grid {
+        grid-template-columns: 1fr;
     }
 
-    .name{
-        font-size:12px;
+    .full {
+        grid-column: auto;
     }
 
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .full{
-        grid-column:auto;
-    }
-
-    .modal{
-        padding:5px;
-    }
-
-    .modal-content{
-        margin:5px auto;
-        padding:13px;
+    .detail-specs {
+        grid-template-columns: 1fr 1fr;
     }
 }
 </style>
@@ -539,33 +550,34 @@ button{
      詳細画面
 ========================= -->
 
-<div id="detailModal" class="modal">
+<div id="detailModal" class="detail-modal">
 
-    <div class="modal-content">
+    <div class="detail-content">
 
-        <div class="modal-header">
+        <div class="detail-header">
+
+            <button
+                class="secondary"
+                onclick="closeDetail()"
+            >
+                ← 戻る
+            </button>
+
             <h2>クラブ詳細</h2>
 
-            <div>
-                <button
-                    class="primary"
-                    onclick="editFromDetail()"
-                >
-                    ✏️ 編集
-                </button>
+            <button
+                class="primary"
+                onclick="editFromDetail()"
+            >
+                編集
+            </button>
 
-                <button
-                    class="close-button"
-                    onclick="closeDetail()"
-                >
-                    ×
-                </button>
-            </div>
         </div>
 
-        <div id="detailContent"></div>
+        <div id="detailBody"></div>
 
     </div>
+
 </div>
 
 
@@ -573,20 +585,11 @@ button{
      編集画面
 ========================= -->
 
-<div id="editModal" class="modal">
+<div id="modal" class="modal">
 
     <div class="modal-content">
 
-        <div class="modal-header">
-            <h2 id="modalTitle">新しいクラブ</h2>
-
-            <button
-                class="close-button"
-                onclick="closeEditModal()"
-            >
-                ×
-            </button>
-        </div>
+        <h2 id="modalTitle">新しいクラブ</h2>
 
         <div class="form-grid">
 
@@ -635,202 +638,94 @@ button{
                 <input id="name" placeholder="例：Qi35">
             </div>
 
-
-            <!-- 総飛距離 -->
+            <!-- 飛距離 -->
 
             <div class="form-group">
                 <label>総飛距離</label>
 
-                <div class="number-picker">
-
-                    <div
-                        id="distanceDisplay"
-                        class="number-display placeholder"
-                        onclick="toggleKeypad('distance')"
-                    >
-                        選択してください
-                    </div>
-
-                    <button
-                        class="picker-clear"
-                        onclick="clearNumber('distance')"
-                    >
-                        ×
-                    </button>
-
-                    <div id="distanceKeypad" class="keypad"></div>
-
-                </div>
+                <select id="distance"></select>
             </div>
-
-
-            <!-- キャリー -->
 
             <div class="form-group">
                 <label>キャリー</label>
 
-                <div class="number-picker">
-
-                    <div
-                        id="carryDisplay"
-                        class="number-display placeholder"
-                        onclick="toggleKeypad('carry')"
-                    >
-                        選択してください
-                    </div>
-
-                    <button
-                        class="picker-clear"
-                        onclick="clearNumber('carry')"
-                    >
-                        ×
-                    </button>
-
-                    <div id="carryKeypad" class="keypad"></div>
-
-                </div>
+                <select id="carry"></select>
             </div>
 
-
-            <!-- クラブ重量 -->
+            <!-- 重量 -->
 
             <div class="form-group">
                 <label>クラブ重量</label>
 
-                <div class="number-picker">
-
-                    <div
-                        id="clubWeightDisplay"
-                        class="number-display placeholder"
-                        onclick="toggleKeypad('clubWeight')"
-                    >
-                        選択してください
-                    </div>
-
-                    <button
-                        class="picker-clear"
-                        onclick="clearNumber('clubWeight')"
-                    >
-                        ×
-                    </button>
-
-                    <div id="clubWeightKeypad" class="keypad"></div>
-
-                </div>
+                <button
+                    type="button"
+                    class="secondary"
+                    style="width:100%; text-align:left;"
+                    onclick="openNumberPicker('clubWeight','クラブ重量','g')"
+                >
+                    <span id="clubWeight">選択してください</span>
+                </button>
             </div>
 
-
-            <!-- クラブ長さ -->
+            <!-- 長さ -->
 
             <div class="form-group">
                 <label>クラブ長さ</label>
 
-                <div class="number-picker">
-
-                    <div
-                        id="clubLengthDisplay"
-                        class="number-display placeholder"
-                        onclick="toggleKeypad('clubLength')"
-                    >
-                        選択してください
-                    </div>
-
-                    <button
-                        class="picker-clear"
-                        onclick="clearNumber('clubLength')"
-                    >
-                        ×
-                    </button>
-
-                    <div id="clubLengthKeypad" class="keypad"></div>
-
-                </div>
+                <button
+                    type="button"
+                    class="secondary"
+                    style="width:100%; text-align:left;"
+                    onclick="openNumberPicker('clubLength','クラブ長さ','inch')"
+                >
+                    <span id="clubLength">選択してください</span>
+                </button>
             </div>
 
-
-            <!-- ロフト角 -->
+            <!-- ロフト -->
 
             <div class="form-group">
                 <label>ロフト角</label>
 
-                <div class="number-picker">
-
-                    <div
-                        id="loftDisplay"
-                        class="number-display placeholder"
-                        onclick="toggleKeypad('loft')"
-                    >
-                        選択してください
-                    </div>
-
-                    <button
-                        class="picker-clear"
-                        onclick="clearNumber('loft')"
-                    >
-                        ×
-                    </button>
-
-                    <div id="loftKeypad" class="keypad"></div>
-
-                </div>
+                <button
+                    type="button"
+                    class="secondary"
+                    style="width:100%; text-align:left;"
+                    onclick="openNumberPicker('loft','ロフト角','°')"
+                >
+                    <span id="loft">選択してください</span>
+                </button>
             </div>
 
-
-            <!-- ライ角 -->
+            <!-- ライ -->
 
             <div class="form-group">
                 <label>ライ角</label>
 
-                <div class="number-picker">
-
-                    <div
-                        id="lieAngleDisplay"
-                        class="number-display placeholder"
-                        onclick="toggleKeypad('lieAngle')"
-                    >
-                        選択してください
-                    </div>
-
-                    <button
-                        class="picker-clear"
-                        onclick="clearNumber('lieAngle')"
-                    >
-                        ×
-                    </button>
-
-                    <div id="lieAngleKeypad" class="keypad"></div>
-
-                </div>
+                <button
+                    type="button"
+                    class="secondary"
+                    style="width:100%; text-align:left;"
+                    onclick="openNumberPicker('lieAngle','ライ角','°')"
+                >
+                    <span id="lieAngle">選択してください</span>
+                </button>
             </div>
 
-
-            <!-- バンス角 -->
+            <!-- バンス -->
 
             <div class="form-group">
                 <label>バンス角</label>
 
-                <div class="number-picker">
-
-                    <div
-                        id="bounceDisplay"
-                        class="number-display placeholder"
-                        onclick="toggleKeypad('bounce')"
-                    >
-                        選択してください
-                    </div>
-
-                    <button
-                        class="picker-clear"
-                        onclick="clearNumber('bounce')"
-                    >
-                        ×
-                    </button>
-
-                    <div id="bounceKeypad" class="keypad"></div>
-
-                </div>
+                <button
+                    type="button"
+                    class="secondary"
+                    style="width:100%; text-align:left;"
+                    onclick="openNumberPicker('bounce','バンス角','°')"
+                >
+                    <span id="bounce">選択してください</span>
+                </button>
             </div>
-
 
             <div class="form-group">
                 <label>シャフト名</label>
@@ -852,62 +747,31 @@ button{
                 </select>
             </div>
 
-
-            <!-- シャフト重量 -->
-
             <div class="form-group">
                 <label>シャフト重量</label>
 
-                <div class="number-picker">
-
-                    <div
-                        id="shaftWeightDisplay"
-                        class="number-display placeholder"
-                        onclick="toggleKeypad('shaftWeight')"
-                    >
-                        選択してください
-                    </div>
-
-                    <button
-                        class="picker-clear"
-                        onclick="clearNumber('shaftWeight')"
-                    >
-                        ×
-                    </button>
-
-                    <div id="shaftWeightKeypad" class="keypad"></div>
-
-                </div>
+                <button
+                    type="button"
+                    class="secondary"
+                    style="width:100%; text-align:left;"
+                    onclick="openNumberPicker('shaftWeight','シャフト重量','g')"
+                >
+                    <span id="shaftWeight">選択してください</span>
+                </button>
             </div>
-
-
-            <!-- シャフト長さ -->
 
             <div class="form-group">
                 <label>シャフト長さ</label>
 
-                <div class="number-picker">
-
-                    <div
-                        id="shaftLengthDisplay"
-                        class="number-display placeholder"
-                        onclick="toggleKeypad('shaftLength')"
-                    >
-                        選択してください
-                    </div>
-
-                    <button
-                        class="picker-clear"
-                        onclick="clearNumber('shaftLength')"
-                    >
-                        ×
-                    </button>
-
-                    <div id="shaftLengthKeypad" class="keypad"></div>
-
-                </div>
+                <button
+                    type="button"
+                    class="secondary"
+                    style="width:100%; text-align:left;"
+                    onclick="openNumberPicker('shaftLength','シャフト長さ','inch')"
+                >
+                    <span id="shaftLength">選択してください</span>
+                </button>
             </div>
-
 
             <div class="form-group">
                 <label>キックポイント</label>
@@ -924,9 +788,12 @@ button{
 
             <div class="form-group">
                 <label>グリップ交換日</label>
-                <input id="gripDate" type="date">
-            </div>
 
+                <input
+                    id="gripDate"
+                    type="date"
+                >
+            </div>
 
             <div class="form-group full">
                 <label>クラブ写真</label>
@@ -944,7 +811,6 @@ button{
                 >
             </div>
 
-
             <div class="form-group full">
                 <label>メモ</label>
 
@@ -957,248 +823,246 @@ button{
 
         </div>
 
-
         <div class="modal-actions">
 
             <button
-                class="primary save-button"
+                class="primary"
                 onclick="saveClub()"
             >
-                💾 保存
+                保存
             </button>
+
+            <button
+                class="secondary"
+                onclick="closeModal()"
+            >
+                キャンセル
+            </button>
+
+            <!-- 削除は一番下 -->
+
+            <div
+                id="deleteArea"
+                class="delete-area"
+                style="display:none;"
+            >
+
+                <button
+                    class="danger"
+                    onclick="deleteCurrentClub()"
+                >
+                    🗑️ このクラブを削除
+                </button>
+
+            </div>
 
         </div>
 
+    </div>
 
-        <!-- 削除は一番下 -->
+</div>
+
+
+<!-- =========================
+     数字キー
+========================= -->
+
+<div id="numberPicker" class="number-picker">
+
+    <div class="number-panel">
 
         <div
-            id="deleteArea"
-            class="delete-area"
-            style="display:none;"
+            id="numberTitle"
+            class="number-title"
         >
+            数値を入力
+        </div>
+
+        <div
+            id="numberDisplay"
+            class="number-display"
+        >
+            0
+        </div>
+
+        <div class="number-grid">
+
+            <button onclick="numberKey('1')">1</button>
+            <button onclick="numberKey('2')">2</button>
+            <button onclick="numberKey('3')">3</button>
+
+            <button onclick="numberKey('4')">4</button>
+            <button onclick="numberKey('5')">5</button>
+            <button onclick="numberKey('6')">6</button>
+
+            <button onclick="numberKey('7')">7</button>
+            <button onclick="numberKey('8')">8</button>
+            <button onclick="numberKey('9')">9</button>
+
+            <button onclick="numberKey('.')">.</button>
+            <button onclick="numberKey('0')">0</button>
+            <button onclick="numberBack()">⌫</button>
 
             <button
-                class="danger"
-                onclick="deleteCurrentClub()"
+                class="cancel"
+                onclick="closeNumberPicker()"
             >
-                🗑️ このクラブを削除
+                キャンセル
+            </button>
+
+            <button
+                class="ok"
+                onclick="confirmNumber()"
+            >
+                決定
             </button>
 
         </div>
 
     </div>
+
 </div>
 
 
 <script>
 
-let clubs=[];
-let editingId=null;
-let detailId=null;
-let currentPhoto=null;
+/* =========================
+   データ
+========================= */
 
-const STORAGE_KEY="golfClubManagerData";
+let clubs = [];
+let editingId = null;
+let currentPhoto = null;
+let detailId = null;
 
-const numberValues={
-    distance:[],
-    carry:[],
-    clubWeight:[],
-    clubLength:[],
-    loft:[],
-    lieAngle:[],
-    bounce:[],
-    shaftWeight:[],
-    shaftLength:[]
-};
-
-const selectedNumbers={};
+const STORAGE_KEY = "golfClubManagerData";
 
 
 /* =========================
-   数値候補作成
+   数字選択
 ========================= */
 
-for(let i=50;i<=350;i+=5){
-    numberValues.distance.push(i);
-    numberValues.carry.push(i);
-}
+let pickerTarget = null;
+let pickerUnit = "";
+let pickerValue = "";
 
-for(let i=200;i<=400;i++){
-    numberValues.clubWeight.push(i);
-}
 
-for(let i=30;i<=50;i+=0.5){
-    numberValues.clubLength.push(Number(i.toFixed(1)));
-}
+function openNumberPicker(target, title, unit) {
 
-for(let i=0;i<=30;i+=0.5){
-    numberValues.loft.push(Number(i.toFixed(1)));
-}
+    pickerTarget = target;
+    pickerUnit = unit;
 
-for(let i=50;i<=65;i+=0.5){
-    numberValues.lieAngle.push(Number(i.toFixed(1)));
-}
+    const current =
+        document.getElementById(target).textContent;
 
-for(let i=0;i<=16;i+=0.5){
-    numberValues.bounce.push(Number(i.toFixed(1)));
-}
+    pickerValue =
+        current.includes(unit)
+        ? current.replace(unit, "")
+        : "";
 
-for(let i=30;i<=130;i++){
-    numberValues.shaftWeight.push(i);
-}
+    document.getElementById("numberTitle")
+        .textContent = title;
 
-for(let i=30;i<=50;i+=0.5){
-    numberValues.shaftLength.push(Number(i.toFixed(1)));
+    updateNumberDisplay();
+
+    document.getElementById("numberPicker")
+        .style.display = "flex";
 }
 
 
-/* =========================
-   単位
-========================= */
+function updateNumberDisplay() {
 
-function unitFor(type){
-
-    if(type==="distance" || type==="carry"){
-        return "yd";
-    }
-
-    if(type==="clubWeight" || type==="shaftWeight"){
-        return "g";
-    }
-
-    if(
-        type==="loft" ||
-        type==="lieAngle" ||
-        type==="bounce"
-    ){
-        return "°";
-    }
-
-    if(
-        type==="clubLength" ||
-        type==="shaftLength"
-    ){
-        return "inch";
-    }
-
-    return "";
+    document.getElementById("numberDisplay")
+        .textContent =
+        (pickerValue || "0") +
+        (pickerValue ? " " + pickerUnit : "");
 }
 
 
-/* =========================
-   キーパッド作成
-========================= */
+function numberKey(value) {
 
-function createKeypads(){
+    if (value === ".") {
 
-    Object.keys(numberValues).forEach(type=>{
-
-        const keypad=document.getElementById(type+"Keypad");
-
-        keypad.innerHTML="";
-
-        const title=document.createElement("div");
-
-        title.className="unit-title";
-
-        title.textContent="選択すると自動で単位が付きます";
-
-        keypad.appendChild(title);
-
-        numberValues[type].forEach(value=>{
-
-            const button=document.createElement("button");
-
-            button.type="button";
-
-            button.textContent=
-                value+" "+unitFor(type);
-
-            button.onclick=function(event){
-
-                event.stopPropagation();
-
-                selectNumber(type,value);
-            };
-
-            keypad.appendChild(button);
-        });
-    });
-}
-
-
-/* =========================
-   数値選択
-========================= */
-
-function toggleKeypad(type){
-
-    const keypad=document.getElementById(type+"Keypad");
-
-    document.querySelectorAll(".keypad").forEach(k=>{
-        if(k!==keypad){
-            k.classList.remove("open");
+        if (pickerValue.includes(".")) {
+            return;
         }
-    });
 
-    keypad.classList.toggle("open");
-}
-
-
-function selectNumber(type,value){
-
-    selectedNumbers[type]=value;
-
-    const display=
-        document.getElementById(type+"Display");
-
-    display.textContent=
-        value+" "+unitFor(type);
-
-    display.classList.remove("placeholder");
-
-    document.getElementById(type+"Keypad")
-        .classList.remove("open");
-}
-
-
-function clearNumber(type){
-
-    selectedNumbers[type]="";
-
-    const display=
-        document.getElementById(type+"Display");
-
-    display.textContent="選択してください";
-
-    display.classList.add("placeholder");
-}
-
-
-/* =========================
-   データ読み込み
-========================= */
-
-function loadData(){
-
-    const saved=
-        localStorage.getItem(STORAGE_KEY);
-
-    if(saved){
-
-        try{
-            clubs=JSON.parse(saved);
-        }catch{
-            clubs=[];
+        if (!pickerValue) {
+            pickerValue = "0";
         }
     }
 
-    renderClubs();
+    pickerValue += value;
+
+    updateNumberDisplay();
 }
 
 
-function saveData(){
+function numberBack() {
+
+    pickerValue =
+        pickerValue.slice(0, -1);
+
+    updateNumberDisplay();
+}
+
+
+function confirmNumber() {
+
+    if (!pickerValue) {
+        closeNumberPicker();
+        return;
+    }
+
+    document.getElementById(pickerTarget)
+        .textContent =
+        pickerValue + " " + pickerUnit;
+
+    closeNumberPicker();
+}
+
+
+function closeNumberPicker() {
+
+    document.getElementById("numberPicker")
+        .style.display = "none";
+}
+
+
+/* =========================
+   飛距離選択
+========================= */
+
+function setupDistanceOptions() {
+
+    const distance =
+        document.getElementById("distance");
+
+    const carry =
+        document.getElementById("carry");
+
+    distance.innerHTML =
+        `<option value="">選択してください</option>`;
+
+    carry.innerHTML =
+        `<option value="">選択してください</option>`;
+
+    for (let i = 50; i <= 400; i += 5) {
+
+        distance.innerHTML +=
+            `<option value="${i}">${i} yd</option>`;
+
+        carry.innerHTML +=
+            `<option value="${i}">${i} yd</option>`;
+    }
+}
+
+
+/* =========================
+   保存
+========================= */
+
+function saveData() {
 
     localStorage.setItem(
         STORAGE_KEY,
@@ -1208,41 +1072,64 @@ function saveData(){
 
 
 /* =========================
+   読み込み
+========================= */
+
+function loadData() {
+
+    const saved =
+        localStorage.getItem(STORAGE_KEY);
+
+    if (saved) {
+
+        try {
+            clubs = JSON.parse(saved);
+        } catch {
+            clubs = [];
+        }
+    }
+
+    renderClubs();
+}
+
+
+/* =========================
    一覧
 ========================= */
 
-function renderClubs(){
+function renderClubs() {
 
-    const grid=
+    const grid =
         document.getElementById("clubGrid");
 
-    const keyword=
+    const keyword =
         document.getElementById("search")
-        .value
-        .toLowerCase();
+            .value
+            .toLowerCase();
 
-    const filtered=clubs.filter(club=>{
+    const filtered =
+        clubs.filter(club => {
 
-        const text=[
-            club.clubType,
-            club.maker,
-            club.name,
-            club.shaft
-        ]
-        .join(" ")
-        .toLowerCase();
+            const text = [
+                club.clubType,
+                club.maker,
+                club.name,
+                club.shaft
+            ]
+            .join(" ")
+            .toLowerCase();
 
-        return text.includes(keyword);
-    });
+            return text.includes(keyword);
+        });
 
 
-    if(filtered.length===0){
+    if (filtered.length === 0) {
 
-        grid.innerHTML=`
+        grid.innerHTML = `
             <div class="empty">
                 <div style="font-size:45px;">⛳</div>
-                <h3>クラブがありません</h3>
-                <p>「＋ 追加」から登録してください。</p>
+                <h2>クラブがありません</h2>
+                <p>「＋ 追加」から登録できます。</p>
             </div>
         `;
 
@@ -1250,16 +1137,17 @@ function renderClubs(){
     }
 
 
-    grid.innerHTML=
-        filtered.map(club=>{
+    grid.innerHTML =
+        filtered.map(club => {
 
-            const photo=
+            const photo =
                 club.photo
                 ? `<img class="club-photo" src="${club.photo}">`
                 : `<div class="no-photo">⛳</div>`;
 
 
             return `
+
                 <div
                     class="club-card"
                     onclick="openDetail('${club.id}')"
@@ -1270,55 +1158,95 @@ function renderClubs(){
                     <div class="card-body">
 
                         <div class="club-type">
-                            ${escapeHTML(club.clubType||"-")}
+                            ${escapeHTML(
+                                club.clubType || "-"
+                            )}
                         </div>
 
                         <div class="maker">
-                            ${escapeHTML(club.maker||"")}
+                            ${escapeHTML(
+                                club.maker || "-"
+                            )}
                         </div>
 
                         <div class="name">
-                            ${escapeHTML(club.name||"")}
+                            ${escapeHTML(
+                                club.name || "-"
+                            )}
                         </div>
 
                         <div class="distance">
 
                             <div class="distance-box">
+
                                 <small>総飛距離</small>
+
                                 <strong>
-                                    ${escapeHTML(formatValue(club.distance,"yd"))}
+                                    ${escapeHTML(
+                                        club.distance || "-"
+                                    )}
                                 </strong>
+
                             </div>
 
                             <div class="distance-box">
+
                                 <small>キャリー</small>
+
                                 <strong>
-                                    ${escapeHTML(formatValue(club.carry,"yd"))}
+                                    ${escapeHTML(
+                                        club.carry || "-"
+                                    )}
                                 </strong>
+
                             </div>
+
+                        </div>
+
+                        <div class="specs">
+
+                            ${spec(
+                                "重量",
+                                club.clubWeight
+                            )}
+
+                            ${spec(
+                                "長さ",
+                                club.clubLength
+                            )}
+
+                            ${spec(
+                                "ロフト",
+                                club.loft
+                            )}
+
+                            ${spec(
+                                "ライ",
+                                club.lieAngle
+                            )}
 
                         </div>
 
                     </div>
 
                 </div>
+
             `;
 
         }).join("");
 }
 
 
-function formatValue(value,unit){
+function spec(title, value) {
 
-    if(value===undefined || value===""){
-        return "-";
-    }
-
-    if(String(value).includes(unit)){
-        return value;
-    }
-
-    return value+" "+unit;
+    return `
+        <div class="spec">
+            <small>${title}</small>
+            <strong>
+                ${escapeHTML(value || "-")}
+            </strong>
+        </div>
+    `;
 }
 
 
@@ -1326,96 +1254,157 @@ function formatValue(value,unit){
    詳細
 ========================= */
 
-function openDetail(id){
+function openDetail(id) {
 
-    detailId=id;
+    const club =
+        clubs.find(c => c.id === id);
 
-    const club=
-        clubs.find(c=>c.id===id);
+    if (!club) return;
 
-    if(!club) return;
+    detailId = id;
 
-
-    const photo=
+    const photo =
         club.photo
         ? `<img class="detail-photo" src="${club.photo}">`
-        : `<div class="detail-no-photo">⛳</div>`;
+        : "";
 
 
-    document.getElementById("detailContent")
-        .innerHTML=`
+    document.getElementById("detailBody")
+        .innerHTML = `
 
             ${photo}
 
-            <div class="detail-type">
-                ${escapeHTML(club.clubType||"-")}
-            </div>
+            <div class="detail-body">
 
-            <div class="detail-maker">
-                ${escapeHTML(club.maker||"メーカー未入力")}
-            </div>
-
-            <div class="detail-name">
-                ${escapeHTML(club.name||"商品名未入力")}
-            </div>
-
-
-            <div class="detail-distance">
-
-                <div class="detail-distance-box">
-                    <small>総飛距離</small>
-                    <strong>
-                        ${escapeHTML(formatValue(club.distance,"yd"))}
-                    </strong>
+                <div class="detail-title">
+                    ${escapeHTML(
+                        club.clubType || "-"
+                    )}
                 </div>
 
-                <div class="detail-distance-box">
-                    <small>キャリー</small>
-                    <strong>
-                        ${escapeHTML(formatValue(club.carry,"yd"))}
-                    </strong>
+                <div class="detail-maker">
+                    ${escapeHTML(
+                        club.maker || "-"
+                    )}
                 </div>
 
-            </div>
+                <div class="detail-name">
+                    ${escapeHTML(
+                        club.name || "-"
+                    )}
+                </div>
 
 
-            <div class="detail-specs">
+                <div class="big-distance">
 
-                ${detailSpec("クラブ重量",club.clubWeight,"g")}
-                ${detailSpec("クラブ長さ",club.clubLength,"inch")}
-                ${detailSpec("ロフト角",club.loft,"°")}
-                ${detailSpec("ライ角",club.lieAngle,"°")}
-                ${detailSpec("バンス角",club.bounce,"°")}
-                ${detailSpec("シャフト",club.shaft,"")}
-                ${detailSpec("フレックス",club.flex,"")}
-                ${detailSpec("シャフト重量",club.shaftWeight,"g")}
-                ${detailSpec("シャフト長さ",club.shaftLength,"inch")}
-                ${detailSpec("キックポイント",club.kickPoint,"")}
-                ${detailSpec("グリップ交換日",club.gripDate,"")}
+                    <div class="big-distance-box">
 
-            </div>
+                        <small>総飛距離</small>
 
+                        <strong>
+                            ${escapeHTML(
+                                club.distance || "-"
+                            )}
+                        </strong>
 
-            ${
-                club.memo
-                ? `
-                    <div class="detail-memo">
-                        <strong>メモ</strong><br>
-                        ${escapeHTML(club.memo)}
                     </div>
-                `
-                :""
-            }
 
+                    <div class="big-distance-box">
+
+                        <small>キャリー</small>
+
+                        <strong>
+                            ${escapeHTML(
+                                club.carry || "-"
+                            )}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail-specs">
+
+                    ${detailSpec(
+                        "クラブ重量",
+                        club.clubWeight
+                    )}
+
+                    ${detailSpec(
+                        "クラブ長さ",
+                        club.clubLength
+                    )}
+
+                    ${detailSpec(
+                        "ロフト角",
+                        club.loft
+                    )}
+
+                    ${detailSpec(
+                        "ライ角",
+                        club.lieAngle
+                    )}
+
+                    ${detailSpec(
+                        "バンス角",
+                        club.bounce
+                    )}
+
+                    ${detailSpec(
+                        "シャフト",
+                        club.shaft
+                    )}
+
+                    ${detailSpec(
+                        "フレックス",
+                        club.flex
+                    )}
+
+                    ${detailSpec(
+                        "シャフト重量",
+                        club.shaftWeight
+                    )}
+
+                    ${detailSpec(
+                        "シャフト長さ",
+                        club.shaftLength
+                    )}
+
+                    ${detailSpec(
+                        "キックポイント",
+                        club.kickPoint
+                    )}
+
+                    ${detailSpec(
+                        "グリップ交換日",
+                        club.gripDate
+                    )}
+
+                </div>
+
+
+                ${
+                    club.memo
+                    ? `
+                        <div class="detail-memo">
+                            <strong>メモ</strong><br><br>
+                            ${escapeHTML(club.memo)}
+                        </div>
+                    `
+                    : ""
+                }
+
+            </div>
         `;
 
 
     document.getElementById("detailModal")
-        .style.display="block";
+        .style.display = "block";
 }
 
 
-function detailSpec(title,value,unit){
+function detailSpec(title, value) {
 
     return `
         <div class="detail-spec">
@@ -1423,9 +1412,7 @@ function detailSpec(title,value,unit){
             <small>${title}</small>
 
             <strong>
-                ${escapeHTML(
-                    formatValue(value,unit)
-                )}
+                ${escapeHTML(value || "-")}
             </strong>
 
         </div>
@@ -1433,20 +1420,24 @@ function detailSpec(title,value,unit){
 }
 
 
-function closeDetail(){
+function closeDetail() {
 
     document.getElementById("detailModal")
-        .style.display="none";
+        .style.display = "none";
+
+    detailId = null;
 }
 
 
-function editFromDetail(){
+function editFromDetail() {
 
-    if(!detailId) return;
+    if (!detailId) return;
+
+    const id = detailId;
 
     closeDetail();
 
-    openEditModal(detailId);
+    openEditModal(id);
 }
 
 
@@ -1454,21 +1445,21 @@ function editFromDetail(){
    追加
 ========================= */
 
-function openAddModal(){
+function openAddModal() {
 
-    editingId=null;
-    currentPhoto=null;
+    editingId = null;
+    currentPhoto = null;
 
     document.getElementById("modalTitle")
-        .textContent="新しいクラブ";
+        .textContent = "新しいクラブ";
 
     document.getElementById("deleteArea")
-        .style.display="none";
+        .style.display = "none";
 
     clearForm();
 
-    document.getElementById("editModal")
-        .style.display="block";
+    document.getElementById("modal")
+        .style.display = "block";
 }
 
 
@@ -1476,160 +1467,127 @@ function openAddModal(){
    編集
 ========================= */
 
-function openEditModal(id){
+function openEditModal(id) {
 
-    const club=
-        clubs.find(c=>c.id===id);
+    const club =
+        clubs.find(c => c.id === id);
 
-    if(!club) return;
+    if (!club) return;
 
-    editingId=id;
-
-    currentPhoto=club.photo||null;
-
+    editingId = id;
+    currentPhoto = club.photo || null;
 
     document.getElementById("modalTitle")
-        .textContent="クラブを編集";
-
+        .textContent = "クラブを編集";
 
     document.getElementById("deleteArea")
-        .style.display="block";
+        .style.display = "block";
 
 
     document.getElementById("clubType")
-        .value=club.clubType||"1W";
+        .value = club.clubType || "1W";
 
     document.getElementById("maker")
-        .value=club.maker||"";
+        .value = club.maker || "";
 
     document.getElementById("name")
-        .value=club.name||"";
+        .value = club.name || "";
 
-    document.getElementById("shaft")
-        .value=club.shaft||"";
+    document.getElementById("distance")
+        .value = club.distance || "";
 
-    document.getElementById("flex")
-        .value=club.flex||"S";
-
-    document.getElementById("kickPoint")
-        .value=club.kickPoint||"中調子";
-
-    document.getElementById("gripDate")
-        .value=club.gripDate||"";
-
-    document.getElementById("memo")
-        .value=club.memo||"";
+    document.getElementById("carry")
+        .value = club.carry || "";
 
 
-    setNumberFromData(
-        "distance",
-        club.distance
-    );
-
-    setNumberFromData(
-        "carry",
-        club.carry
-    );
-
-    setNumberFromData(
+    setNumberValue(
         "clubWeight",
         club.clubWeight
     );
 
-    setNumberFromData(
+    setNumberValue(
         "clubLength",
         club.clubLength
     );
 
-    setNumberFromData(
+    setNumberValue(
         "loft",
         club.loft
     );
 
-    setNumberFromData(
+    setNumberValue(
         "lieAngle",
         club.lieAngle
     );
 
-    setNumberFromData(
+    setNumberValue(
         "bounce",
         club.bounce
     );
 
-    setNumberFromData(
+
+    document.getElementById("shaft")
+        .value = club.shaft || "";
+
+    document.getElementById("flex")
+        .value = club.flex || "S";
+
+
+    setNumberValue(
         "shaftWeight",
         club.shaftWeight
     );
 
-    setNumberFromData(
+    setNumberValue(
         "shaftLength",
         club.shaftLength
     );
 
 
-    const preview=
+    document.getElementById("kickPoint")
+        .value =
+        club.kickPoint || "中調子";
+
+    document.getElementById("gripDate")
+        .value = club.gripDate || "";
+
+    document.getElementById("memo")
+        .value = club.memo || "";
+
+
+    const preview =
         document.getElementById("preview");
 
+    if (currentPhoto) {
 
-    if(currentPhoto){
+        preview.src = currentPhoto;
+        preview.style.display = "block";
 
-        preview.src=currentPhoto;
-        preview.style.display="block";
+    } else {
 
-    }else{
-
-        preview.style.display="none";
+        preview.style.display = "none";
     }
 
 
-    document.getElementById("photo")
-        .value="";
-
-
-    document.getElementById("editModal")
-        .style.display="block";
+    document.getElementById("modal")
+        .style.display = "block";
 }
 
 
-function setNumberFromData(type,value){
+function setNumberValue(id, value) {
 
-    if(value===undefined || value===""){
+    const element =
+        document.getElementById(id);
 
-        clearNumber(type);
+    if (value) {
 
-        return;
+        element.textContent = value;
+
+    } else {
+
+        element.textContent =
+            "選択してください";
     }
-
-
-    let number=
-        parseFloat(
-            String(value)
-                .replace("yd","")
-                .replace("g","")
-                .replace("inch","")
-                .replace("°","")
-                .trim()
-        );
-
-
-    if(isNaN(number)){
-
-        clearNumber(type);
-
-        return;
-    }
-
-
-    selectedNumbers[type]=number;
-
-
-    const display=
-        document.getElementById(type+"Display");
-
-    display.textContent=
-        number+" "+unitFor(type);
-
-    display.classList.remove("placeholder");
 }
 
 
@@ -1637,43 +1595,61 @@ function setNumberFromData(type,value){
    フォーム初期化
 ========================= */
 
-function clearForm(){
+function clearForm() {
 
     document.getElementById("clubType")
-        .value="1W";
+        .value = "1W";
 
     document.getElementById("maker")
-        .value="";
+        .value = "";
 
     document.getElementById("name")
-        .value="";
+        .value = "";
+
+    document.getElementById("distance")
+        .value = "";
+
+    document.getElementById("carry")
+        .value = "";
+
+
+    [
+        "clubWeight",
+        "clubLength",
+        "loft",
+        "lieAngle",
+        "bounce",
+        "shaftWeight",
+        "shaftLength"
+    ].forEach(id => {
+
+        document.getElementById(id)
+            .textContent =
+            "選択してください";
+
+    });
+
 
     document.getElementById("shaft")
-        .value="";
+        .value = "";
 
     document.getElementById("flex")
-        .value="S";
+        .value = "S";
 
     document.getElementById("kickPoint")
-        .value="中調子";
+        .value = "中調子";
 
     document.getElementById("gripDate")
-        .value="";
+        .value = "";
 
     document.getElementById("memo")
-        .value="";
+        .value = "";
 
     document.getElementById("photo")
-        .value="";
+        .value = "";
 
     document.getElementById("preview")
-        .style.display="none";
-
-
-    Object.keys(numberValues)
-        .forEach(type=>{
-            clearNumber(type);
-        });
+        .style.display = "none";
 }
 
 
@@ -1681,9 +1657,9 @@ function clearForm(){
    保存
 ========================= */
 
-function saveClub(){
+function saveClub() {
 
-    const data={
+    const data = {
 
         clubType:
             document.getElementById("clubType").value,
@@ -1695,39 +1671,29 @@ function saveClub(){
             document.getElementById("name").value,
 
         distance:
-            selectedNumbers.distance==="undefined"
-            ? ""
-            : selectedNumbers.distance,
+            document.getElementById("distance").value
+            ? document.getElementById("distance").value + " yd"
+            : "",
 
         carry:
-            selectedNumbers.carry==="undefined"
-            ? ""
-            : selectedNumbers.carry,
+            document.getElementById("carry").value
+            ? document.getElementById("carry").value + " yd"
+            : "",
 
         clubWeight:
-            selectedNumbers.clubWeight==="undefined"
-            ? ""
-            : selectedNumbers.clubWeight,
+            getNumberValue("clubWeight"),
 
         clubLength:
-            selectedNumbers.clubLength==="undefined"
-            ? ""
-            : selectedNumbers.clubLength,
+            getNumberValue("clubLength"),
 
         loft:
-            selectedNumbers.loft==="undefined"
-            ? ""
-            : selectedNumbers.loft,
+            getNumberValue("loft"),
 
         lieAngle:
-            selectedNumbers.lieAngle==="undefined"
-            ? ""
-            : selectedNumbers.lieAngle,
+            getNumberValue("lieAngle"),
 
         bounce:
-            selectedNumbers.bounce==="undefined"
-            ? ""
-            : selectedNumbers.bounce,
+            getNumberValue("bounce"),
 
         shaft:
             document.getElementById("shaft").value,
@@ -1736,14 +1702,10 @@ function saveClub(){
             document.getElementById("flex").value,
 
         shaftWeight:
-            selectedNumbers.shaftWeight==="undefined"
-            ? ""
-            : selectedNumbers.shaftWeight,
+            getNumberValue("shaftWeight"),
 
         shaftLength:
-            selectedNumbers.shaftLength==="undefined"
-            ? ""
-            : selectedNumbers.shaftLength,
+            getNumberValue("shaftLength"),
 
         kickPoint:
             document.getElementById("kickPoint").value,
@@ -1754,26 +1716,27 @@ function saveClub(){
         memo:
             document.getElementById("memo").value,
 
-        photo:currentPhoto
+        photo:
+            currentPhoto
     };
 
 
-    if(editingId){
+    if (editingId) {
 
-        const index=
+        const index =
             clubs.findIndex(
-                c=>c.id===editingId
+                c => c.id === editingId
             );
 
-        if(index!==-1){
+        if (index !== -1) {
 
-            clubs[index]={
+            clubs[index] = {
                 ...clubs[index],
                 ...data
             };
         }
 
-    }else{
+    } else {
 
         clubs.push({
 
@@ -1789,7 +1752,24 @@ function saveClub(){
 
     renderClubs();
 
-    closeEditModal();
+    closeModal();
+}
+
+
+function getNumberValue(id) {
+
+    const text =
+        document.getElementById(id)
+            .textContent;
+
+    if (
+        !text ||
+        text === "選択してください"
+    ) {
+        return "";
+    }
+
+    return text;
 }
 
 
@@ -1798,102 +1778,81 @@ function saveClub(){
 ========================= */
 
 document.getElementById("photo")
-.addEventListener(
-    "change",
-    function(event){
+    .addEventListener(
+        "change",
+        function(event) {
 
-        const file=
-            event.target.files[0];
+            const file =
+                event.target.files[0];
 
-        if(!file) return;
+            if (!file) return;
 
+            const reader =
+                new FileReader();
 
-        const reader=
-            new FileReader();
+            reader.onload =
+                function(e) {
 
+                    currentPhoto =
+                        e.target.result;
 
-        reader.onload=function(e){
+                    const preview =
+                        document.getElementById(
+                            "preview"
+                        );
 
-            currentPhoto=e.target.result;
+                    preview.src =
+                        currentPhoto;
 
-            const preview=
-                document.getElementById("preview");
+                    preview.style.display =
+                        "block";
+                };
 
-            preview.src=currentPhoto;
-
-            preview.style.display="block";
-        };
-
-
-        reader.readAsDataURL(file);
-    }
-);
+            reader.readAsDataURL(file);
+        }
+    );
 
 
 /* =========================
    削除
 ========================= */
 
-function deleteCurrentClub(){
+function deleteCurrentClub() {
 
-    if(!editingId) return;
+    if (!editingId) return;
 
-
-    if(!confirm(
-        "このクラブを削除しますか？\nこの操作は元に戻せません。"
-    )){
+    if (
+        !confirm(
+            "このクラブを削除しますか？"
+        )
+    ) {
         return;
     }
 
-
-    clubs=
+    clubs =
         clubs.filter(
-            club=>club.id!==editingId
+            club =>
+                club.id !== editingId
         );
-
 
     saveData();
 
     renderClubs();
 
-    closeEditModal();
-}
-
-
-function deleteClub(id){
-
-    if(!confirm(
-        "このクラブを削除しますか？"
-    )){
-        return;
-    }
-
-
-    clubs=
-        clubs.filter(
-            club=>club.id!==id
-        );
-
-
-    saveData();
-
-    renderClubs();
+    closeModal();
 }
 
 
 /* =========================
-   編集画面を閉じる
+   モーダル
 ========================= */
 
-function closeEditModal(){
+function closeModal() {
 
-    document.getElementById("editModal")
-        .style.display="none";
+    document.getElementById("modal")
+        .style.display = "none";
 
-    document.querySelectorAll(".keypad")
-        .forEach(k=>{
-            k.classList.remove("open");
-        });
+    editingId = null;
 }
 
 
@@ -1902,24 +1861,24 @@ function closeEditModal(){
 ========================= */
 
 document.getElementById("search")
-.addEventListener(
-    "input",
-    renderClubs
-);
+    .addEventListener(
+        "input",
+        renderClubs
+    );
 
 
 /* =========================
    HTMLエスケープ
 ========================= */
 
-function escapeHTML(value){
+function escapeHTML(value) {
 
-    return String(value||"")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
 }
 
 
@@ -1927,7 +1886,7 @@ function escapeHTML(value){
    起動
 ========================= */
 
-createKeypads();
+setupDistanceOptions();
 
 loadData();
 
