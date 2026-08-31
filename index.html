@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MY GOLF SPEC</title>
+<title>Golf Club Manager</title>
 
 <style>
 * {
@@ -12,291 +12,187 @@
 
 body {
     margin: 0;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
-    background: #f3f5f2;
-    color: #1d241f;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    background: #f4f6f5;
+    color: #222;
 }
 
 header {
-    background: linear-gradient(135deg, #163d29, #28734a);
+    background: #126b3a;
     color: white;
-    padding: 24px 20px;
-}
-
-.header-inner {
-    max-width: 1100px;
-    margin: auto;
-}
-
-.logo {
-    font-size: 14px;
-    letter-spacing: 2px;
-    opacity: .8;
+    padding: 20px;
 }
 
 header h1 {
-    margin: 5px 0;
-    font-size: 30px;
+    margin: 0;
+    font-size: 25px;
 }
 
 header p {
-    margin: 0;
+    margin: 6px 0 0;
     opacity: .85;
 }
 
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
-    padding: 20px;
+    padding: 18px;
 }
 
-.top-actions {
+.toolbar {
     display: flex;
-    gap: 12px;
+    gap: 10px;
+    flex-wrap: wrap;
     margin-bottom: 18px;
 }
 
-.add-button {
-    flex: 1;
-    border: none;
-    border-radius: 14px;
-    padding: 16px;
-    background: #237442;
-    color: white;
-    font-size: 17px;
-    font-weight: bold;
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-.stat {
-    background: white;
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: 0 3px 12px rgba(0,0,0,.06);
-}
-
-.stat-title {
-    font-size: 12px;
-    color: #777;
-}
-
-.stat-value {
-    font-size: 25px;
-    font-weight: bold;
-    color: #237442;
-    margin-top: 5px;
-}
-
-.controls {
-    background: white;
-    padding: 14px;
-    border-radius: 16px;
-    margin-bottom: 20px;
-    display: grid;
-    grid-template-columns: 1fr 190px;
-    gap: 10px;
+input,
+select,
+textarea,
+button {
+    font: inherit;
 }
 
 input,
 select,
 textarea {
-    font: inherit;
-}
-
-.search,
-.sort {
     width: 100%;
-    padding: 13px;
-    border: 1px solid #d4d8d5;
-    border-radius: 11px;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
     background: white;
 }
 
-.category-tabs {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    margin-bottom: 20px;
-    padding-bottom: 4px;
+.search {
+    flex: 1;
+    min-width: 220px;
 }
 
-.category-tabs button {
-    white-space: nowrap;
-    border: none;
-    background: white;
-    padding: 10px 15px;
-    border-radius: 20px;
-    color: #555;
+button {
+    border: 0;
+    border-radius: 9px;
+    padding: 11px 16px;
+    cursor: pointer;
 }
 
-.category-tabs button.active {
-    background: #237442;
+.primary {
+    background: #126b3a;
+    color: white;
+}
+
+.secondary {
+    background: #e5e9e7;
+}
+
+.danger {
+    background: #d9363e;
     color: white;
 }
 
 .club-grid {
     display: grid;
-    grid-template-columns:
-        repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
 }
 
 .club-card {
     background: white;
-    border-radius: 20px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 5px 18px rgba(0,0,0,.07);
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
 }
 
 .club-photo {
     width: 100%;
-    height: 175px;
-    object-fit: contain;
-    background: #eef1ee;
+    height: 180px;
+    object-fit: cover;
+    background: #e9eceb;
 }
 
 .no-photo {
-    height: 175px;
-    background: #eef1ee;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #9aa19b;
-    font-size: 45px;
+    background: #e9eceb;
+    color: #777;
+    font-size: 50px;
 }
 
-.card-content {
+.card-body {
     padding: 16px;
 }
 
-.badge {
-    display: inline-block;
-    padding: 5px 9px;
-    background: #e9f4ed;
-    color: #237442;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
 .club-type {
-    font-size: 27px;
-    font-weight: bold;
-    color: #237442;
-    margin-top: 8px;
+    color: #126b3a;
+    font-size: 25px;
+    font-weight: 800;
 }
 
 .maker {
     color: #777;
-    margin-top: 3px;
-}
-
-.club-name {
-    font-size: 18px;
-    font-weight: bold;
     margin-top: 4px;
 }
 
-.distance-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.name {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 5px 0 14px;
+}
+
+.distance {
+    display: flex;
     gap: 8px;
-    margin-top: 15px;
 }
 
 .distance-box {
-    background: #f0f7f2;
-    border-radius: 11px;
+    flex: 1;
+    background: #edf7f1;
     padding: 10px;
-    text-align: center;
+    border-radius: 10px;
 }
 
-.distance-label {
-    display: block;
-    font-size: 11px;
+.distance-box small {
     color: #777;
 }
 
-.distance-number {
+.distance-box strong {
     display: block;
-    font-size: 20px;
-    font-weight: bold;
-    color: #237442;
     margin-top: 3px;
 }
 
-.card-buttons {
+.specs {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+}
+
+.spec {
+    background: #f5f6f6;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.spec small {
+    display: block;
+    color: #777;
+    font-size: 11px;
+}
+
+.actions {
     display: flex;
     gap: 8px;
     margin-top: 15px;
 }
 
-.card-buttons button {
+.actions button {
     flex: 1;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    font-weight: bold;
-}
-
-.edit-button {
-    background: #edf1f8;
-}
-
-.delete-button {
-    background: #fff0f0;
-    color: #c62828;
-}
-
-.ranking {
-    background: white;
-    border-radius: 18px;
-    padding: 18px;
-    margin-top: 25px;
-    box-shadow: 0 3px 12px rgba(0,0,0,.06);
-}
-
-.ranking h2 {
-    margin-top: 0;
-}
-
-.rank-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.rank {
-    width: 35px;
-    font-weight: bold;
-    color: #237442;
-}
-
-.rank-name {
-    flex: 1;
-}
-
-.rank-distance {
-    font-weight: bold;
 }
 
 .empty {
-    grid-column: 1 / -1;
     text-align: center;
-    padding: 60px 20px;
+    padding: 70px 20px;
     color: #777;
 }
 
@@ -304,17 +200,17 @@ textarea {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.55);
-    padding: 15px;
-    overflow-y: auto;
+    background: rgba(0,0,0,.45);
     z-index: 10;
+    overflow-y: auto;
+    padding: 20px;
 }
 
 .modal-content {
-    max-width: 650px;
-    margin: 20px auto;
+    max-width: 700px;
+    margin: 30px auto;
     background: white;
-    border-radius: 20px;
+    border-radius: 18px;
     padding: 20px;
 }
 
@@ -322,89 +218,69 @@ textarea {
     margin-top: 0;
 }
 
-.form-section {
-    border-top: 1px solid #eee;
-    padding-top: 16px;
-    margin-top: 18px;
-}
-
-.form-section h3 {
-    margin-top: 0;
-    color: #237442;
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
 
 .form-group {
-    margin-bottom: 13px;
+    margin-bottom: 12px;
 }
 
 .form-group label {
     display: block;
-    font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
+    color: #555;
     margin-bottom: 5px;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-}
-
-.form-group textarea {
-    min-height: 90px;
+.full {
+    grid-column: 1 / -1;
 }
 
 .preview {
     width: 100%;
-    max-height: 210px;
+    max-height: 250px;
     object-fit: contain;
-    background: #eee;
-    border-radius: 12px;
+    border-radius: 10px;
     margin-bottom: 10px;
 }
 
-.modal-buttons {
+.modal-actions {
     display: flex;
     gap: 10px;
     margin-top: 20px;
 }
 
-.modal-buttons button {
+.modal-actions button {
     flex: 1;
-    border: none;
-    padding: 14px;
-    border-radius: 12px;
-    font-weight: bold;
-}
-
-.cancel {
-    background: #ddd;
-}
-
-.save {
-    background: #237442;
-    color: white;
 }
 
 @media (max-width: 600px) {
+    .container {
+        padding: 12px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: auto;
+    }
+
+    .modal {
+        padding: 8px;
+    }
+
+    .modal-content {
+        margin: 10px auto;
+        padding: 16px;
+    }
 
     header h1 {
-        font-size: 25px;
-    }
-
-    .container {
-        padding: 14px;
-    }
-
-    .stats {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .controls {
-        grid-template-columns: 1fr;
+        font-size: 22px;
     }
 }
 </style>
@@ -413,534 +289,462 @@ textarea {
 <body>
 
 <header>
-    <div class="header-inner">
-        <div class="logo">GOLF EQUIPMENT MANAGEMENT</div>
-        <h1>⛳ MY GOLF SPEC</h1>
-        <p>あなたのクラブを一括管理</p>
-    </div>
+    <h1>⛳ Golf Club Manager</h1>
+    <p>ゴルフクラブ管理</p>
 </header>
 
 <div class="container">
 
-    <div class="top-actions">
-        <button class="add-button" onclick="openAdd()">
+    <div class="toolbar">
+        <input
+            id="search"
+            class="search"
+            type="search"
+            placeholder="🔍 番手・メーカー・商品名を検索"
+        >
+
+        <button class="primary" onclick="openAddModal()">
             ＋ クラブを追加
         </button>
     </div>
 
-    <div class="stats">
-
-        <div class="stat">
-            <div class="stat-title">クラブ本数</div>
-            <div class="stat-value" id="clubCount">0</div>
-        </div>
-
-        <div class="stat">
-            <div class="stat-title">登録メーカー</div>
-            <div class="stat-value" id="makerCount">0</div>
-        </div>
-
-        <div class="stat">
-            <div class="stat-title">最高飛距離</div>
-            <div class="stat-value" id="maxDistance">-</div>
-        </div>
-
-    </div>
-
-    <div class="controls">
-
-        <input
-            id="search"
-            class="search"
-            placeholder="🔍 クラブ・メーカー・商品名を検索"
-            oninput="render()"
-        >
-
-        <select
-            id="sort"
-            class="sort"
-            onchange="render()"
-        >
-            <option value="club">番手順</option>
-            <option value="distance">飛距離が長い順</option>
-            <option value="distanceAsc">飛距離が短い順</option>
-            <option value="maker">メーカー順</option>
-            <option value="name">商品名順</option>
-        </select>
-
-    </div>
-
-    <div class="category-tabs">
-
-        <button
-            class="active"
-            onclick="setCategory('すべて', this)">
-            すべて
-        </button>
-
-        <button onclick="setCategory('ドライバー', this)">
-            ドライバー
-        </button>
-
-        <button onclick="setCategory('FW', this)">
-            FW
-        </button>
-
-        <button onclick="setCategory('UT', this)">
-            UT
-        </button>
-
-        <button onclick="setCategory('アイアン', this)">
-            アイアン
-        </button>
-
-        <button onclick="setCategory('ウェッジ', this)">
-            ウェッジ
-        </button>
-
-        <button onclick="setCategory('パター', this)">
-            パター
-        </button>
-
-    </div>
-
-    <div id="clubList" class="club-grid"></div>
-
-    <div class="ranking">
-
-        <h2>🏆 飛距離ランキング</h2>
-
-        <div id="rankingList"></div>
-
-    </div>
+    <div id="clubGrid" class="club-grid"></div>
 
 </div>
 
-
+<!-- 編集画面 -->
 <div id="modal" class="modal">
 
-<div class="modal-content">
+    <div class="modal-content">
 
-<h2 id="modalTitle">新しいクラブ</h2>
+        <h2 id="modalTitle">新しいクラブ</h2>
 
-<div class="form-group">
+        <div class="form-grid">
 
-<label>クラブ写真</label>
+            <div class="form-group">
+                <label>番手</label>
+                <select id="clubType">
+                    <option>1W</option>
+                    <option>2W</option>
+                    <option>3W</option>
+                    <option>4W</option>
+                    <option>5W</option>
+                    <option>7W</option>
+                    <option>9W</option>
+                    <option>2U</option>
+                    <option>3U</option>
+                    <option>4U</option>
+                    <option>5U</option>
+                    <option>6U</option>
+                    <option>1I</option>
+                    <option>2I</option>
+                    <option>3I</option>
+                    <option>4I</option>
+                    <option>5I</option>
+                    <option>6I</option>
+                    <option>7I</option>
+                    <option>8I</option>
+                    <option>9I</option>
+                    <option>PW</option>
+                    <option>AW</option>
+                    <option>SW</option>
+                    <option>LW</option>
+                    <option>チッパー</option>
+                    <option>パター</option>
+                    <option>その他</option>
+                </select>
+            </div>
 
-<input
-    type="file"
-    accept="image/*"
-    onchange="selectImage(event)"
->
+            <div class="form-group">
+                <label>メーカー</label>
+                <input id="maker" placeholder="例：TaylorMade">
+            </div>
 
-<img
-    id="preview"
-    class="preview"
-    style="display:none;"
->
+            <div class="form-group full">
+                <label>商品名</label>
+                <input id="name" placeholder="例：Qi35">
+            </div>
 
+            <div class="form-group">
+                <label>総飛距離</label>
+                <input id="distance" placeholder="例：230 yd">
+            </div>
+
+            <div class="form-group">
+                <label>キャリー</label>
+                <input id="carry" placeholder="例：210 yd">
+            </div>
+
+            <div class="form-group">
+                <label>クラブ重量</label>
+                <input id="clubWeight" placeholder="例：300 g">
+            </div>
+
+            <div class="form-group">
+                <label>クラブ長さ</label>
+                <input id="clubLength" placeholder="例：45.5 inch">
+            </div>
+
+            <div class="form-group">
+                <label>ロフト角</label>
+                <input id="loft" placeholder="例：10.5°">
+            </div>
+
+            <div class="form-group">
+                <label>ライ角</label>
+                <input id="lieAngle" placeholder="例：60°">
+            </div>
+
+            <div class="form-group">
+                <label>バンス角</label>
+                <input id="bounce" placeholder="例：10°">
+            </div>
+
+            <div class="form-group">
+                <label>シャフト名</label>
+                <input id="shaft" placeholder="例：VENTUS TR">
+            </div>
+
+            <div class="form-group">
+                <label>フレックス</label>
+                <select id="flex">
+                    <option>R2</option>
+                    <option>R</option>
+                    <option>SR</option>
+                    <option selected>S</option>
+                    <option>SX</option>
+                    <option>X</option>
+                    <option>TX</option>
+                    <option>その他</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>シャフト重量</label>
+                <input id="shaftWeight" placeholder="例：60 g">
+            </div>
+
+            <div class="form-group">
+                <label>シャフト長さ</label>
+                <input id="shaftLength" placeholder="例：44.0 inch">
+            </div>
+
+            <div class="form-group">
+                <label>キックポイント</label>
+                <select id="kickPoint">
+                    <option>元調子</option>
+                    <option>中元調子</option>
+                    <option selected>中調子</option>
+                    <option>先中調子</option>
+                    <option>先調子</option>
+                    <option>その他</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>グリップ交換日</label>
+                <input id="gripDate" type="date">
+            </div>
+
+            <div class="form-group full">
+                <label>クラブ写真</label>
+                <input
+                    id="photo"
+                    type="file"
+                    accept="image/*"
+                >
+                <img id="preview" class="preview" style="display:none;">
+            </div>
+
+            <div class="form-group full">
+                <label>メモ</label>
+                <textarea
+                    id="memo"
+                    rows="5"
+                    placeholder="クラブについてのメモ"
+                ></textarea>
+            </div>
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button class="secondary" onclick="closeModal()">
+                キャンセル
+            </button>
+
+            <button
+                id="deleteButton"
+                class="danger"
+                onclick="deleteCurrentClub()"
+                style="display:none;"
+            >
+                削除
+            </button>
+
+            <button class="primary" onclick="saveClub()">
+                保存
+            </button>
+
+        </div>
+
+    </div>
 </div>
-
-
-<div class="form-section">
-
-<h3>基本情報</h3>
-
-<div class="form-group">
-
-<label>番手</label>
-
-<select id="clubType">
-
-<option>1W</option>
-<option>2W</option>
-<option>3W</option>
-<option>4W</option>
-<option>5W</option>
-<option>7W</option>
-<option>9W</option>
-
-<option>2U</option>
-<option>3U</option>
-<option>4U</option>
-<option>5U</option>
-<option>6U</option>
-
-<option>1I</option>
-<option>2I</option>
-<option>3I</option>
-<option>4I</option>
-<option>5I</option>
-<option>6I</option>
-<option>7I</option>
-<option>8I</option>
-<option>9I</option>
-
-<option>PW</option>
-<option>AW</option>
-<option>SW</option>
-<option>LW</option>
-
-<option>チッパー</option>
-<option>パター</option>
-<option>その他</option>
-
-</select>
-
-</div>
-
-<div class="form-group">
-<label>メーカー</label>
-<input id="maker">
-</div>
-
-<div class="form-group">
-<label>商品名</label>
-<input id="name">
-</div>
-
-</div>
-
-
-<div class="form-section">
-
-<h3>飛距離</h3>
-
-<div class="form-group">
-<label>総飛距離</label>
-<input id="distance" placeholder="例：250 yd">
-</div>
-
-<div class="form-group">
-<label>キャリー</label>
-<input id="carry" placeholder="例：230 yd">
-</div>
-
-</div>
-
-
-<div class="form-section">
-
-<h3>クラブスペック</h3>
-
-<div class="form-group">
-<label>クラブ重量</label>
-<input id="weight" placeholder="例：300 g">
-</div>
-
-<div class="form-group">
-<label>クラブ長さ</label>
-<input id="length" placeholder="例：45.5 inch">
-</div>
-
-<div class="form-group">
-<label>ロフト角</label>
-<input id="loft" placeholder="例：10.5°">
-</div>
-
-<div class="form-group">
-<label>ライ角</label>
-<input id="lie" placeholder="例：59°">
-</div>
-
-<div class="form-group">
-<label>バンス角</label>
-<input id="bounce" placeholder="例：10°">
-</div>
-
-</div>
-
-
-<div class="form-section">
-
-<h3>シャフト</h3>
-
-<div class="form-group">
-<label>シャフト名</label>
-<input id="shaft">
-</div>
-
-<div class="form-group">
-<label>フレックス</label>
-
-<select id="flex">
-<option>R2</option>
-<option>R</option>
-<option>SR</option>
-<option selected>S</option>
-<option>SX</option>
-<option>X</option>
-<option>TX</option>
-<option>その他</option>
-</select>
-
-</div>
-
-<div class="form-group">
-<label>シャフト重量</label>
-<input id="shaftWeight">
-</div>
-
-<div class="form-group">
-<label>シャフト長さ</label>
-<input id="shaftLength">
-</div>
-
-<div class="form-group">
-<label>キックポイント</label>
-
-<select id="kick">
-
-<option>元調子</option>
-<option>中元調子</option>
-<option selected>中調子</option>
-<option>先中調子</option>
-<option>先調子</option>
-<option>その他</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<div class="form-section">
-
-<h3>グリップ・メモ</h3>
-
-<div class="form-group">
-<label>グリップ交換日</label>
-<input id="gripDate" type="date">
-</div>
-
-<div class="form-group">
-<label>メモ</label>
-<textarea id="memo"></textarea>
-</div>
-
-</div>
-
-
-<div class="modal-buttons">
-
-<button class="cancel" onclick="closeModal()">
-キャンセル
-</button>
-
-<button class="save" onclick="saveClub()">
-保存
-</button>
-
-</div>
-
-</div>
-
-</div>
-
 
 <script>
 
-let clubs =
-    JSON.parse(
-        localStorage.getItem("golfClubs2") || "[]"
-    );
-
+let clubs = [];
 let editingId = null;
-let imageData = null;
-let currentCategory = "すべて";
+let currentPhoto = null;
+
+const STORAGE_KEY = "golfClubManagerData";
+
+/* =========================
+   データ読み込み
+========================= */
+
+function loadData() {
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (saved) {
+        try {
+            clubs = JSON.parse(saved);
+        } catch {
+            clubs = [];
+        }
+    }
+
+    renderClubs();
+}
 
 
-const clubOrder = [
-
-"1W",
-"2W",
-"3W",
-"4W",
-"5W",
-"7W",
-"9W",
-
-"2U",
-"3U",
-"4U",
-"5U",
-"6U",
-
-"1I",
-"2I",
-"3I",
-"4I",
-"5I",
-"6I",
-"7I",
-"8I",
-"9I",
-
-"PW",
-"AW",
-"SW",
-"LW",
-"チッパー",
-"パター",
-"その他"
-
-];
-
+/* =========================
+   データ保存
+========================= */
 
 function saveData() {
 
     localStorage.setItem(
-        "golfClubs2",
+        STORAGE_KEY,
         JSON.stringify(clubs)
     );
-
 }
 
 
-function getCategory(type) {
+/* =========================
+   一覧表示
+========================= */
 
-    if (type === "1W" || type === "2W") {
-        return "ドライバー";
+function renderClubs() {
+
+    const grid = document.getElementById("clubGrid");
+
+    const keyword =
+        document.getElementById("search").value
+        .toLowerCase();
+
+    const filtered = clubs.filter(club => {
+
+        const text = [
+            club.clubType,
+            club.maker,
+            club.name,
+            club.shaft
+        ].join(" ").toLowerCase();
+
+        return text.includes(keyword);
+    });
+
+    if (filtered.length === 0) {
+
+        grid.innerHTML = `
+            <div class="empty">
+                <div style="font-size:50px;">⛳</div>
+                <h2>クラブがありません</h2>
+                <p>「＋ クラブを追加」から登録できます。</p>
+            </div>
+        `;
+
+        return;
     }
 
-    if (
-        ["3W","4W","5W","7W","9W"].includes(type)
-    ) {
-        return "FW";
-    }
+    grid.innerHTML = filtered.map(club => {
 
-    if (
-        ["2U","3U","4U","5U","6U"].includes(type)
-    ) {
-        return "UT";
-    }
+        const photo = club.photo
+            ? `<img class="club-photo" src="${club.photo}">`
+            : `<div class="no-photo">⛳</div>`;
 
-    if (
-        ["1I","2I","3I","4I","5I","6I","7I","8I","9I"]
-        .includes(type)
-    ) {
-        return "アイアン";
-    }
+        return `
+            <div class="club-card">
 
-    if (
-        ["PW","AW","SW","LW","チッパー"]
-        .includes(type)
-    ) {
-        return "ウェッジ";
-    }
+                ${photo}
 
-    if (type === "パター") {
-        return "パター";
-    }
+                <div class="card-body">
 
-    return "その他";
+                    <div class="club-type">
+                        ${escapeHTML(club.clubType || "未設定")}
+                    </div>
+
+                    <div class="maker">
+                        ${escapeHTML(club.maker || "メーカー未入力")}
+                    </div>
+
+                    <div class="name">
+                        ${escapeHTML(club.name || "商品名未入力")}
+                    </div>
+
+                    <div class="distance">
+
+                        <div class="distance-box">
+                            <small>総飛距離</small>
+                            <strong>${escapeHTML(club.distance || "-")}</strong>
+                        </div>
+
+                        <div class="distance-box">
+                            <small>キャリー</small>
+                            <strong>${escapeHTML(club.carry || "-")}</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="specs">
+
+                        ${spec("クラブ重量", club.clubWeight)}
+                        ${spec("クラブ長さ", club.clubLength)}
+                        ${spec("ロフト角", club.loft)}
+                        ${spec("ライ角", club.lieAngle)}
+                        ${spec("バンス角", club.bounce)}
+                        ${spec("シャフト", club.shaft)}
+                        ${spec("フレックス", club.flex)}
+                        ${spec("シャフト重量", club.shaftWeight)}
+                        ${spec("キックポイント", club.kickPoint)}
+                        ${spec("グリップ交換日", club.gripDate)}
+
+                    </div>
+
+                    ${
+                        club.memo
+                        ? `<p style="margin-top:14px;">
+                            ${escapeHTML(club.memo)}
+                           </p>`
+                        : ""
+                    }
+
+                    <div class="actions">
+
+                        <button
+                            class="primary"
+                            onclick="openEditModal('${club.id}')"
+                        >
+                            ✏️ 編集
+                        </button>
+
+                        <button
+                            class="danger"
+                            onclick="deleteClub('${club.id}')"
+                        >
+                            🗑️ 削除
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+
+    }).join("");
 }
 
 
-function openAdd() {
+function spec(title, value) {
+
+    return `
+        <div class="spec">
+            <small>${title}</small>
+            <strong>${escapeHTML(value || "-")}</strong>
+        </div>
+    `;
+}
+
+
+/* =========================
+   追加
+========================= */
+
+function openAddModal() {
 
     editingId = null;
-    imageData = null;
+    currentPhoto = null;
 
-    document.getElementById("modalTitle").textContent =
-        "新しいクラブ";
+    document.getElementById("modalTitle")
+        .textContent = "新しいクラブ";
+
+    document.getElementById("deleteButton")
+        .style.display = "none";
 
     clearForm();
 
-    document.getElementById("modal").style.display =
-        "block";
+    document.getElementById("modal")
+        .style.display = "block";
 }
 
 
-function editClub(id) {
+/* =========================
+   編集
+========================= */
 
-    const club =
-        clubs.find(c => c.id === id);
+function openEditModal(id) {
+
+    const club = clubs.find(c => c.id === id);
 
     if (!club) return;
 
     editingId = id;
+    currentPhoto = club.photo || null;
 
-    document.getElementById("modalTitle").textContent =
-        "クラブを編集";
+    document.getElementById("modalTitle")
+        .textContent = "クラブを編集";
 
-    document.getElementById("clubType").value =
-        club.clubType || "1W";
+    document.getElementById("deleteButton")
+        .style.display = "block";
 
-    document.getElementById("maker").value =
-        club.maker || "";
+    document.getElementById("clubType").value = club.clubType || "1W";
+    document.getElementById("maker").value = club.maker || "";
+    document.getElementById("name").value = club.name || "";
+    document.getElementById("distance").value = club.distance || "";
+    document.getElementById("carry").value = club.carry || "";
+    document.getElementById("clubWeight").value = club.clubWeight || "";
+    document.getElementById("clubLength").value = club.clubLength || "";
+    document.getElementById("loft").value = club.loft || "";
+    document.getElementById("lieAngle").value = club.lieAngle || "";
+    document.getElementById("bounce").value = club.bounce || "";
+    document.getElementById("shaft").value = club.shaft || "";
+    document.getElementById("flex").value = club.flex || "S";
+    document.getElementById("shaftWeight").value = club.shaftWeight || "";
+    document.getElementById("shaftLength").value = club.shaftLength || "";
+    document.getElementById("kickPoint").value = club.kickPoint || "中調子";
+    document.getElementById("gripDate").value = club.gripDate || "";
+    document.getElementById("memo").value = club.memo || "";
 
-    document.getElementById("name").value =
-        club.name || "";
+    const preview = document.getElementById("preview");
 
-    document.getElementById("distance").value =
-        club.distance || "";
-
-    document.getElementById("carry").value =
-        club.carry || "";
-
-    document.getElementById("weight").value =
-        club.weight || club.clubWeight || "";
-
-    document.getElementById("length").value =
-        club.length || club.clubLength || "";
-
-    document.getElementById("loft").value =
-        club.loft || "";
-
-    document.getElementById("lie").value =
-        club.lie || club.lieAngle || "";
-
-    document.getElementById("bounce").value =
-        club.bounce || "";
-
-    document.getElementById("shaft").value =
-        club.shaft || "";
-
-    document.getElementById("flex").value =
-        club.flex || "S";
-
-    document.getElementById("shaftWeight").value =
-        club.shaftWeight || "";
-
-    document.getElementById("shaftLength").value =
-        club.shaftLength || "";
-
-    document.getElementById("kick").value =
-        club.kick ||
-        club.kickPoint ||
-        "中調子";
-
-    document.getElementById("gripDate").value =
-        club.gripDate || "";
-
-    document.getElementById("memo").value =
-        club.memo || "";
-
-    imageData =
-        club.image ||
-        club.imageData ||
-        null;
-
-    const preview =
-        document.getElementById("preview");
-
-    if (imageData) {
-
-        preview.src = imageData;
+    if (currentPhoto) {
+        preview.src = currentPhoto;
         preview.style.display = "block";
-
     } else {
-
         preview.style.display = "none";
-
     }
 
-    document.getElementById("modal").style.display =
-        "block";
+    document.getElementById("modal")
+        .style.display = "block";
 }
 
+
+/* =========================
+   フォーム初期化
+========================= */
 
 function clearForm() {
 
@@ -949,527 +753,70 @@ function clearForm() {
     document.getElementById("name").value = "";
     document.getElementById("distance").value = "";
     document.getElementById("carry").value = "";
-    document.getElementById("weight").value = "";
-    document.getElementById("length").value = "";
+    document.getElementById("clubWeight").value = "";
+    document.getElementById("clubLength").value = "";
     document.getElementById("loft").value = "";
-    document.getElementById("lie").value = "";
+    document.getElementById("lieAngle").value = "";
     document.getElementById("bounce").value = "";
     document.getElementById("shaft").value = "";
     document.getElementById("flex").value = "S";
     document.getElementById("shaftWeight").value = "";
     document.getElementById("shaftLength").value = "";
-    document.getElementById("kick").value = "中調子";
+    document.getElementById("kickPoint").value = "中調子";
     document.getElementById("gripDate").value = "";
     document.getElementById("memo").value = "";
+    document.getElementById("photo").value = "";
 
-    document.getElementById("preview").style.display =
-        "none";
+    document.getElementById("preview")
+        .style.display = "none";
 }
 
 
-function selectImage(event) {
-
-    const file =
-        event.target.files[0];
-
-    if (!file) return;
-
-    const reader =
-        new FileReader();
-
-    reader.onload = function(e) {
-
-        imageData =
-            e.target.result;
-
-        const preview =
-            document.getElementById("preview");
-
-        preview.src =
-            imageData;
-
-        preview.style.display =
-            "block";
-    };
-
-    reader.readAsDataURL(file);
-}
-
+/* =========================
+   保存
+========================= */
 
 function saveClub() {
 
-    const club = {
+    const data = {
 
-        id:
-            editingId ||
-            Date.now(),
+        clubType: document.getElementById("clubType").value,
 
-        clubType:
-            document.getElementById("clubType").value,
+        maker: document.getElementById("maker").value,
 
-        maker:
-            document.getElementById("maker").value,
+        name: document.getElementById("name").value,
 
-        name:
-            document.getElementById("name").value,
+        distance: document.getElementById("distance").value,
 
-        distance:
-            document.getElementById("distance").value,
+        carry: document.getElementById("carry").value,
 
-        carry:
-            document.getElementById("carry").value,
+        clubWeight: document.getElementById("clubWeight").value,
 
-        weight:
-            document.getElementById("weight").value,
+        clubLength: document.getElementById("clubLength").value,
 
-        length:
-            document.getElementById("length").value,
+        loft: document.getElementById("loft").value,
 
-        loft:
-            document.getElementById("loft").value,
+        lieAngle: document.getElementById("lieAngle").value,
 
-        lie:
-            document.getElementById("lie").value,
+        bounce: document.getElementById("bounce").value,
 
-        bounce:
-            document.getElementById("bounce").value,
+        shaft: document.getElementById("shaft").value,
 
-        shaft:
-            document.getElementById("shaft").value,
+        flex: document.getElementById("flex").value,
 
-        flex:
-            document.getElementById("flex").value,
+        shaftWeight: document.getElementById("shaftWeight").value,
 
-        shaftWeight:
-            document.getElementById("shaftWeight").value,
+        shaftLength: document.getElementById("shaftLength").value,
 
-        shaftLength:
-            document.getElementById("shaftLength").value,
+        kickPoint: document.getElementById("kickPoint").value,
 
-        kick:
-            document.getElementById("kick").value,
+        gripDate: document.getElementById("gripDate").value,
 
-        gripDate:
-            document.getElementById("gripDate").value,
+        memo: document.getElementById("memo").value,
 
-        memo:
-            document.getElementById("memo").value,
-
-        image:
-            imageData
+        photo: currentPhoto
 
     };
 
 
-    if (editingId) {
-
-        const index =
-            clubs.findIndex(
-                c => c.id === editingId
-            );
-
-        if (index !== -1) {
-            clubs[index] = club;
-        }
-
-    } else {
-
-        clubs.push(club);
-
-    }
-
-
-    saveData();
-
-    closeModal();
-
-    render();
-}
-
-
-function deleteClub(id) {
-
-    if (
-        !confirm(
-            "このクラブを削除しますか？"
-        )
-    ) {
-        return;
-    }
-
-    clubs =
-        clubs.filter(
-            c => c.id !== id
-        );
-
-    saveData();
-
-    render();
-}
-
-
-function closeModal() {
-
-    document.getElementById("modal").style.display =
-        "none";
-}
-
-
-function setCategory(category, button) {
-
-    currentCategory =
-        category;
-
-    document
-        .querySelectorAll(".category-tabs button")
-        .forEach(
-            b => b.classList.remove("active")
-        );
-
-    button.classList.add("active");
-
-    render();
-}
-
-
-function distanceNumber(value) {
-
-    if (!value) return 0;
-
-    const match =
-        String(value).match(/\d+(\.\d+)?/);
-
-    return match
-        ? Number(match[0])
-        : 0;
-}
-
-
-function render() {
-
-    const list =
-        document.getElementById("clubList");
-
-    const keyword =
-        document.getElementById("search")
-        .value
-        .toLowerCase();
-
-    const sort =
-        document.getElementById("sort")
-        .value;
-
-
-    let filtered =
-        clubs.filter(club => {
-
-            const category =
-                getCategory(
-                    club.clubType
-                );
-
-            const text =
-                (
-                    club.clubType +
-                    club.maker +
-                    club.name +
-                    club.shaft
-                )
-                .toLowerCase();
-
-            return (
-                (currentCategory === "すべて" ||
-                 category === currentCategory)
-                &&
-                text.includes(keyword)
-            );
-        });
-
-
-    filtered.sort((a,b) => {
-
-        if (sort === "distance") {
-            return distanceNumber(b.distance)
-                 - distanceNumber(a.distance);
-        }
-
-        if (sort === "distanceAsc") {
-            return distanceNumber(a.distance)
-                 - distanceNumber(b.distance);
-        }
-
-        if (sort === "maker") {
-            return (a.maker || "")
-                .localeCompare(
-                    b.maker || "",
-                    "ja"
-                );
-        }
-
-        if (sort === "name") {
-            return (a.name || "")
-                .localeCompare(
-                    b.name || "",
-                    "ja"
-                );
-        }
-
-        return (
-            clubOrder.indexOf(a.clubType)
-            -
-            clubOrder.indexOf(b.clubType)
-        );
-    });
-
-
-    if (filtered.length === 0) {
-
-        list.innerHTML =
-            `
-            <div class="empty">
-                ⛳<br><br>
-                クラブがありません
-            </div>
-            `;
-
-    } else {
-
-        list.innerHTML =
-            filtered
-            .map(club => createCard(club))
-            .join("");
-
-    }
-
-    updateStats();
-
-    updateRanking();
-}
-
-
-function createCard(club) {
-
-    const image =
-        club.image ||
-        club.imageData ||
-        null;
-
-    return `
-
-    <div class="club-card">
-
-        ${
-            image
-            ?
-            `<img
-                class="club-photo"
-                src="${image}"
-            >`
-            :
-            `<div class="no-photo">
-                ⛳
-            </div>`
-        }
-
-        <div class="card-content">
-
-            <span class="badge">
-                ${escapeHTML(
-                    getCategory(
-                        club.clubType
-                    )
-                )}
-            </span>
-
-            <div class="club-type">
-                ${escapeHTML(
-                    club.clubType || "未設定"
-                )}
-            </div>
-
-            <div class="maker">
-                ${escapeHTML(
-                    club.maker || "メーカー未入力"
-                )}
-            </div>
-
-            <div class="club-name">
-                ${escapeHTML(
-                    club.name || "商品名未入力"
-                )}
-            </div>
-
-            <div class="distance-row">
-
-                <div class="distance-box">
-                    <span class="distance-label">
-                        総飛距離
-                    </span>
-
-                    <span class="distance-number">
-                        ${escapeHTML(
-                            club.distance || "-"
-                        )}
-                    </span>
-                </div>
-
-                <div class="distance-box">
-                    <span class="distance-label">
-                        キャリー
-                    </span>
-
-                    <span class="distance-number">
-                        ${escapeHTML(
-                            club.carry || "-"
-                        )}
-                    </span>
-                </div>
-
-            </div>
-
-            <div class="card-buttons">
-
-                <button
-                    class="edit-button"
-                    onclick="editClub(${club.id})">
-                    ✏️ 編集
-                </button>
-
-                <button
-                    class="delete-button"
-                    onclick="deleteClub(${club.id})">
-                    🗑 削除
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    `;
-}
-
-
-function updateStats() {
-
-    document.getElementById("clubCount")
-        .textContent =
-        clubs.length;
-
-
-    const makers =
-        new Set(
-            clubs
-            .map(c => c.maker)
-            .filter(Boolean)
-        );
-
-    document.getElementById("makerCount")
-        .textContent =
-        makers.size;
-
-
-    const max =
-        Math.max(
-            0,
-            ...clubs.map(
-                c => distanceNumber(
-                    c.distance
-                )
-            )
-        );
-
-    document.getElementById("maxDistance")
-        .textContent =
-        max > 0
-        ? max + " yd"
-        : "-";
-}
-
-
-function updateRanking() {
-
-    const ranking =
-        document.getElementById("rankingList");
-
-    const sorted =
-        [...clubs]
-        .filter(
-            c =>
-                distanceNumber(
-                    c.distance
-                ) > 0
-        )
-        .sort(
-            (a,b) =>
-                distanceNumber(b.distance)
-                -
-                distanceNumber(a.distance)
-        )
-        .slice(0, 10);
-
-
-    if (sorted.length === 0) {
-
-        ranking.innerHTML =
-            "飛距離を登録するとランキングが表示されます。";
-
-        return;
-    }
-
-
-    ranking.innerHTML =
-        sorted.map(
-            (club,index) => `
-
-            <div class="rank-row">
-
-                <div class="rank">
-                    ${index + 1}
-                </div>
-
-                <div class="rank-name">
-                    <strong>
-                        ${escapeHTML(
-                            club.clubType
-                        )}
-                    </strong>
-                    ${escapeHTML(
-                        club.maker || ""
-                    )}
-                    ${escapeHTML(
-                        club.name || ""
-                    )}
-                </div>
-
-                <div class="rank-distance">
-                    ${escapeHTML(
-                        club.distance
-                    )}
-                </div>
-
-            </div>
-
-            `
-        ).join("");
-}
-
-
-function escapeHTML(value) {
-
-    return String(value || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-
-render();
-
-</script>
-
-</body>
-</html>
+    if (editingId
