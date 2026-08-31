@@ -99,12 +99,10 @@ button{
     display:grid;
 
     /*
-       iPhoneでも横スクロールなし。
-       番手をしっかり確保し、
-       メーカー・商品名をほぼ同じ幅にする。
+       番手を約2文字分広げる
 
        写真     50px
-       番手     58px
+       番手     76px
        メーカー 1fr
        商品名   1.08fr
        飛距離   62px
@@ -113,7 +111,7 @@ button{
 
     grid-template-columns:
         50px
-        58px
+        76px
         minmax(0,1fr)
         minmax(0,1.08fr)
         62px
@@ -163,7 +161,7 @@ button{
 
     grid-template-columns:
         50px
-        58px
+        76px
         minmax(0,1fr)
         minmax(0,1.08fr)
         62px
@@ -218,12 +216,11 @@ button{
 
 /* =====================================================
    番手
-   「パター」「チッパー」でもメーカー側へ食い込ませない
 ===================================================== */
 
 .club-type{
-    width:58px;
-    min-width:58px;
+    width:76px;
+    min-width:76px;
 
     color:#126b3a;
 
@@ -239,7 +236,6 @@ button{
 
 /* =====================================================
    メーカー
-   長い場合はこちらで省略
 ===================================================== */
 
 .maker{
@@ -257,7 +253,6 @@ button{
 
 /* =====================================================
    商品名
-   メーカーより少しだけ広い
 ===================================================== */
 
 .name{
@@ -275,8 +270,6 @@ button{
 
 /* =====================================================
    飛距離・キャリー
-   「飛距離」「キャリー」の小見出しは表示せず
-   ydだけを1行で表示
 ===================================================== */
 
 .distance-value{
@@ -519,7 +512,6 @@ button{
 
 /* =====================================================
    メモ
-   改行維持＋完全左寄せ
 ===================================================== */
 
 .detail-memo{
@@ -775,13 +767,16 @@ button{
 
     /*
        iPhone一覧
+
        写真｜番手｜メーカー｜商品名｜飛距離｜キャリー
+
+       番手を約2文字分拡大
     */
 
     .list-header{
         grid-template-columns:
             50px
-            58px
+            76px
             minmax(0,1fr)
             minmax(0,1.08fr)
             62px
@@ -797,7 +792,7 @@ button{
     .club-card{
         grid-template-columns:
             50px
-            58px
+            76px
             minmax(0,1fr)
             minmax(0,1.08fr)
             62px
@@ -815,8 +810,8 @@ button{
     }
 
     .club-type{
-        width:58px;
-        min-width:58px;
+        width:76px;
+        min-width:76px;
 
         font-size:14px;
         font-weight:800;
@@ -872,7 +867,7 @@ button{
     .list-header{
         grid-template-columns:
             45px
-            53px
+            71px
             minmax(0,1fr)
             minmax(0,1.08fr)
             58px
@@ -884,7 +879,7 @@ button{
     .club-card{
         grid-template-columns:
             45px
-            53px
+            71px
             minmax(0,1fr)
             minmax(0,1.08fr)
             58px
@@ -898,8 +893,8 @@ button{
     }
 
     .club-type{
-        width:53px;
-        min-width:53px;
+        width:71px;
+        min-width:71px;
 
         font-size:13px;
     }
@@ -926,10 +921,6 @@ button{
 
 <div class="container">
 
-    <!-- =================================================
-         検索・追加
-    ================================================== -->
-
     <div class="toolbar">
 
         <input
@@ -947,10 +938,6 @@ button{
         </button>
 
     </div>
-
-    <!-- =================================================
-         一覧項目見出し
-    ================================================== -->
 
     <div class="list-header">
 
@@ -979,10 +966,6 @@ button{
         </div>
 
     </div>
-
-    <!-- =================================================
-         クラブ一覧
-    ================================================== -->
 
     <div
         id="clubGrid"
@@ -1050,6 +1033,7 @@ button{
         <div class="form-grid">
 
             <div class="form-group">
+
                 <label>
                     番手
                 </label>
@@ -1090,6 +1074,7 @@ button{
                     <option>その他</option>
 
                 </select>
+
             </div>
 
 
@@ -1505,89 +1490,21 @@ button{
 
         <div class="keypad">
 
-            <button
-                class="key"
-                onclick="pressKey('1')"
-            >
-                1
-            </button>
+            <button class="key" onclick="pressKey('1')">1</button>
+            <button class="key" onclick="pressKey('2')">2</button>
+            <button class="key" onclick="pressKey('3')">3</button>
 
-            <button
-                class="key"
-                onclick="pressKey('2')"
-            >
-                2
-            </button>
+            <button class="key" onclick="pressKey('4')">4</button>
+            <button class="key" onclick="pressKey('5')">5</button>
+            <button class="key" onclick="pressKey('6')">6</button>
 
-            <button
-                class="key"
-                onclick="pressKey('3')"
-            >
-                3
-            </button>
+            <button class="key" onclick="pressKey('7')">7</button>
+            <button class="key" onclick="pressKey('8')">8</button>
+            <button class="key" onclick="pressKey('9')">9</button>
 
-            <button
-                class="key"
-                onclick="pressKey('4')"
-            >
-                4
-            </button>
-
-            <button
-                class="key"
-                onclick="pressKey('5')"
-            >
-                5
-            </button>
-
-            <button
-                class="key"
-                onclick="pressKey('6')"
-            >
-                6
-            </button>
-
-            <button
-                class="key"
-                onclick="pressKey('7')"
-            >
-                7
-            </button>
-
-            <button
-                class="key"
-                onclick="pressKey('8')"
-            >
-                8
-            </button>
-
-            <button
-                class="key"
-                onclick="pressKey('9')"
-            >
-                9
-            </button>
-
-            <button
-                class="key"
-                onclick="pressKey('.')"
-            >
-                .
-            </button>
-
-            <button
-                class="key"
-                onclick="pressKey('0')"
-            >
-                0
-            </button>
-
-            <button
-                class="key"
-                onclick="backspaceKey()"
-            >
-                ⌫
-            </button>
+            <button class="key" onclick="pressKey('.')">.</button>
+            <button class="key" onclick="pressKey('0')">0</button>
+            <button class="key" onclick="backspaceKey()">⌫</button>
 
             <button
                 class="key key-wide"
@@ -2004,8 +1921,6 @@ function openDetail(id){
             </div>
 
 
-            <!-- クラブスペック -->
-
             <div class="spec-section-title">
                 🏌️ クラブスペック
             </div>
@@ -2044,8 +1959,6 @@ function openDetail(id){
 
             </div>
 
-
-            <!-- シャフトスペック -->
 
             <div class="spec-section-title">
                 🏌️‍♂️ シャフトスペック
@@ -2713,7 +2626,6 @@ document.getElementById(
 
 /* =====================================================
    飛距離
-   5ヤード単位
 ===================================================== */
 
 function openDistancePicker(field){
