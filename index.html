@@ -374,13 +374,12 @@ button{
     border-radius:9px;
     margin-top:5px;
     margin-bottom:0;
-    white-space:pre-wrap;
+    white-space:normal;
     text-align:left;
     text-indent:0;
     line-height:1.2;
     word-break:break-word;
     overflow-wrap:anywhere;
-    padding-left:12px;
 }
 
 .detail-memo .memo-line{
@@ -389,6 +388,7 @@ button{
     padding:0;
     text-indent:0;
     line-height:1.2;
+    white-space:pre-wrap;
 }
 /* =====================================================
    編集
@@ -1459,11 +1459,7 @@ function formatMemo(value){
     return String(value)
         .split(/\r?\n/)
         .map(line=>{
-            return `
-                <span class="memo-line">
-                    ${escapeHTML(line.trimStart())}
-                </span>
-            `;
+            return `<span class="memo-line">${escapeHTML(line.trimStart())}</span>`;
         })
         .join("");
 }
