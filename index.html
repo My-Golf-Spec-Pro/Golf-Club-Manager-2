@@ -24,39 +24,34 @@ body {
 header {
     background: #126b3a;
     color: white;
-    padding: 14px 18px;
+    padding: 10px 14px;
 }
 
 header h1 {
     margin: 0;
-    font-size: 20px;
+    font-size: 19px;
 }
 
 header p {
-    margin: 3px 0 0;
-    font-size: 12px;
+    margin: 2px 0 0;
+    font-size: 11px;
     opacity: .85;
 }
 
 /* =========================
-   一覧
+   メイン
 ========================= */
 
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: auto;
-    padding: 10px;
+    padding: 8px;
 }
 
 .toolbar {
     display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
-.search {
-    flex: 1;
-    min-width: 0;
+    gap: 7px;
+    margin-bottom: 8px;
 }
 
 input,
@@ -74,6 +69,11 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 8px;
     background: white;
+}
+
+.search {
+    flex: 1;
+    min-width: 0;
 }
 
 button {
@@ -97,58 +97,87 @@ button {
     color: white;
 }
 
-/* 10個くらい見える小型カード */
+/* =========================
+   横長一覧
+========================= */
 
 .club-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
-    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
+/*
+   1クラブ＝横長1行
+   高さを抑えて10個程度見える
+*/
+
 .club-card {
+    width: 100%;
+    min-height: 76px;
     background: white;
-    border-radius: 10px;
+    border-radius: 9px;
     overflow: hidden;
-    box-shadow: 0 2px 7px rgba(0,0,0,.08);
+    box-shadow: 0 1px 5px rgba(0,0,0,.08);
+    display: flex;
+    align-items: stretch;
     cursor: pointer;
-    transition: transform .12s;
+    transition: transform .1s;
 }
 
 .club-card:active {
-    transform: scale(.97);
+    transform: scale(.99);
 }
 
+/* 写真 */
+
 .club-photo {
-    width: 100%;
-    height: 85px;
+    width: 85px;
+    min-width: 85px;
+    height: 76px;
     object-fit: cover;
     background: #e9eceb;
 }
 
 .no-photo {
-    height: 85px;
+    width: 85px;
+    min-width: 85px;
+    height: 76px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #e9eceb;
     color: #777;
-    font-size: 28px;
+    font-size: 27px;
 }
 
+/* 中央 */
+
 .card-body {
-    padding: 8px;
+    flex: 1;
+    min-width: 0;
+    padding: 6px 9px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.club-main {
+    width: 180px;
+    min-width: 180px;
 }
 
 .club-type {
     color: #126b3a;
-    font-size: 19px;
-    font-weight: 800;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1;
 }
 
 .maker {
     color: #777;
-    font-size: 11px;
-    margin-top: 1px;
+    font-size: 10px;
+    margin-top: 3px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -157,41 +186,54 @@ button {
 .name {
     font-size: 13px;
     font-weight: 700;
-    margin: 2px 0 6px;
+    margin-top: 2px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+/* 距離 */
+
 .distance {
     display: flex;
-    gap: 4px;
+    gap: 5px;
+    flex: 1;
+    min-width: 150px;
 }
 
 .distance-box {
     flex: 1;
+    min-width: 70px;
     background: #edf7f1;
-    padding: 5px;
-    border-radius: 6px;
-    min-width: 0;
+    border-radius: 7px;
+    padding: 6px 8px;
 }
 
 .distance-box small {
+    display: block;
     color: #777;
-    font-size: 8px;
+    font-size: 9px;
 }
 
 .distance-box strong {
     display: block;
+    color: #126b3a;
+    font-size: 14px;
     margin-top: 1px;
-    font-size: 11px;
 }
 
+/* 簡易スペック */
+
 .card-mini-info {
-    margin-top: 5px;
+    width: 180px;
+    min-width: 180px;
+    font-size: 10px;
     color: #555;
-    font-size: 9px;
-    line-height: 1.4;
+    line-height: 1.7;
+}
+
+.mini-label {
+    color: #888;
 }
 
 .empty {
@@ -211,14 +253,14 @@ button {
     background: rgba(0,0,0,.5);
     z-index: 20;
     overflow-y: auto;
-    padding: 10px;
+    padding: 8px;
 }
 
 .detail-content {
     max-width: 650px;
-    margin: 10px auto;
+    margin: 5px auto;
     background: white;
-    border-radius: 16px;
+    border-radius: 15px;
     overflow: hidden;
 }
 
@@ -226,7 +268,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 14px;
+    padding: 10px 12px;
     border-bottom: 1px solid #eee;
     position: sticky;
     top: 0;
@@ -236,7 +278,7 @@ button {
 
 .detail-header h2 {
     margin: 0;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .edit-top-button {
@@ -253,46 +295,46 @@ button {
 }
 
 .detail-no-photo {
-    height: 180px;
+    height: 170px;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #e9eceb;
-    font-size: 60px;
+    font-size: 55px;
 }
 
 .detail-body {
-    padding: 16px;
+    padding: 15px;
 }
 
 .detail-title {
     color: #126b3a;
-    font-size: 30px;
+    font-size: 29px;
     font-weight: 900;
 }
 
 .detail-maker {
     color: #777;
-    margin-top: 3px;
+    margin-top: 2px;
 }
 
 .detail-name {
-    font-size: 21px;
+    font-size: 20px;
     font-weight: 800;
-    margin: 5px 0 15px;
+    margin: 4px 0 13px;
 }
 
 .detail-distance {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 15px;
+    gap: 7px;
+    margin-bottom: 13px;
 }
 
 .big-distance {
     background: #edf7f1;
-    border-radius: 10px;
-    padding: 12px;
+    border-radius: 9px;
+    padding: 11px;
     text-align: center;
 }
 
@@ -304,39 +346,39 @@ button {
 .big-distance strong {
     display: block;
     color: #126b3a;
-    font-size: 23px;
-    margin-top: 3px;
+    font-size: 22px;
+    margin-top: 2px;
 }
 
 .detail-specs {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 7px;
+    gap: 6px;
 }
 
 .detail-spec {
     background: #f5f6f6;
     border-radius: 8px;
-    padding: 9px;
+    padding: 8px;
 }
 
 .detail-spec small {
     display: block;
     color: #777;
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .detail-spec strong {
     display: block;
     margin-top: 2px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .detail-memo {
     background: #fffbe8;
-    padding: 12px;
-    border-radius: 9px;
-    margin-top: 12px;
+    padding: 11px;
+    border-radius: 8px;
+    margin-top: 11px;
     white-space: pre-wrap;
 }
 
@@ -351,34 +393,34 @@ button {
     background: rgba(0,0,0,.5);
     z-index: 30;
     overflow-y: auto;
-    padding: 10px;
+    padding: 8px;
 }
 
 .modal-content {
     max-width: 700px;
-    margin: 10px auto;
+    margin: 5px auto;
     background: white;
-    border-radius: 16px;
-    padding: 16px;
+    border-radius: 15px;
+    padding: 15px;
 }
 
 .modal h2 {
-    margin: 0 0 15px;
+    margin: 0 0 14px;
 }
 
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 9px;
 }
 
 .form-group {
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 }
 
 .form-group label {
     display: block;
-    font-size: 12px;
+    font-size: 11px;
     color: #555;
     margin-bottom: 4px;
 }
@@ -392,24 +434,22 @@ button {
     max-height: 220px;
     object-fit: contain;
     border-radius: 9px;
-    margin-top: 8px;
+    margin-top: 7px;
 }
 
 .modal-actions {
     display: flex;
-    gap: 8px;
-    margin-top: 18px;
+    gap: 7px;
+    margin-top: 16px;
 }
 
 .modal-actions button {
     flex: 1;
 }
 
-/* 削除は一番下 */
-
 .delete-area {
-    margin-top: 22px;
-    padding-top: 15px;
+    margin-top: 20px;
+    padding-top: 13px;
     border-top: 1px solid #ddd;
 }
 
@@ -435,28 +475,29 @@ button {
     width: 100%;
     max-width: 600px;
     background: white;
-    border-radius: 18px 18px 0 0;
-    padding: 15px;
+    border-radius: 17px 17px 0 0;
+    padding: 14px;
     max-height: 75vh;
     overflow-y: auto;
 }
 
 .choice-box h3 {
-    margin: 0 0 12px;
+    margin: 0 0 11px;
     text-align: center;
 }
 
 .choice-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 7px;
+    gap: 6px;
 }
 
 .choice-button {
     background: #edf7f1;
     color: #126b3a;
     font-weight: 700;
-    padding: 11px 4px;
+    padding: 10px 3px;
+    font-size: 13px;
 }
 
 .choice-button:active {
@@ -471,15 +512,15 @@ button {
 .keypad {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 10px;
+    gap: 7px;
+    margin-top: 9px;
 }
 
 .key {
     background: #f0f2f1;
     font-size: 20px;
     font-weight: 700;
-    padding: 15px;
+    padding: 14px;
 }
 
 .key:active {
@@ -495,16 +536,13 @@ button {
     color: white;
 }
 
-/* 単位表示 */
-
 .unit-preview {
     text-align: center;
     background: #f5f6f6;
-    border-radius: 10px;
-    padding: 12px;
-    font-size: 25px;
+    border-radius: 9px;
+    padding: 11px;
+    font-size: 24px;
     font-weight: 800;
-    margin-bottom: 10px;
 }
 
 /* =========================
@@ -514,44 +552,65 @@ button {
 @media (max-width: 600px) {
 
     header {
-        padding: 11px 14px;
+        padding: 9px 12px;
     }
 
     header h1 {
-        font-size: 18px;
+        font-size: 17px;
     }
 
     .container {
-        padding: 8px;
+        padding: 6px;
     }
 
-    .club-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
+    .toolbar {
+        margin-bottom: 6px;
+    }
+
+    .club-card {
+        min-height: 61px;
     }
 
     .club-photo,
     .no-photo {
-        height: 65px;
+        width: 65px;
+        min-width: 65px;
+        height: 61px;
+    }
+
+    .no-photo {
+        font-size: 22px;
     }
 
     .card-body {
-        padding: 6px;
+        padding: 4px 6px;
+        gap: 5px;
+    }
+
+    .club-main {
+        width: 82px;
+        min-width: 82px;
     }
 
     .club-type {
-        font-size: 17px;
+        font-size: 16px;
     }
 
     .maker {
-        font-size: 9px;
+        font-size: 8px;
     }
 
     .name {
-        font-size: 11px;
+        font-size: 9px;
+    }
+
+    .distance {
+        gap: 3px;
+        min-width: 105px;
     }
 
     .distance-box {
+        min-width: 50px;
         padding: 4px;
     }
 
@@ -560,11 +619,11 @@ button {
     }
 
     .distance-box strong {
-        font-size: 9px;
+        font-size: 10px;
     }
 
     .card-mini-info {
-        font-size: 8px;
+        display: none;
     }
 
     .form-grid {
@@ -581,11 +640,11 @@ button {
 
     .detail-content,
     .modal-content {
-        margin: 4px auto;
+        margin: 3px auto;
     }
 
-    .detail-header {
-        padding: 10px;
+    .choice-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 </style>
@@ -601,6 +660,7 @@ button {
 <div class="container">
 
     <div class="toolbar">
+
         <input
             id="search"
             class="search"
@@ -608,27 +668,40 @@ button {
             placeholder="🔍 番手・メーカー・商品名"
         >
 
-        <button class="primary" onclick="openAddModal()">
+        <button
+            class="primary"
+            onclick="openAddModal()"
+        >
             ＋追加
         </button>
+
     </div>
 
-    <div id="clubGrid" class="club-grid"></div>
+    <div
+        id="clubGrid"
+        class="club-grid"
+    ></div>
 
 </div>
 
 
 <!-- =========================
-     詳細画面
+     詳細
 ========================= -->
 
-<div id="detailModal" class="detail-modal">
+<div
+    id="detailModal"
+    class="detail-modal"
+>
 
     <div class="detail-content">
 
         <div class="detail-header">
 
-            <button class="secondary" onclick="closeDetail()">
+            <button
+                class="secondary"
+                onclick="closeDetail()"
+            >
                 ← 戻る
             </button>
 
@@ -646,24 +719,33 @@ button {
         <div id="detailContent"></div>
 
     </div>
+
 </div>
 
 
 <!-- =========================
-     編集・追加画面
+     編集
 ========================= -->
 
-<div id="modal" class="modal">
+<div
+    id="modal"
+    class="modal"
+>
 
     <div class="modal-content">
 
-        <h2 id="modalTitle">新しいクラブ</h2>
+        <h2 id="modalTitle">
+            新しいクラブ
+        </h2>
 
         <div class="form-grid">
 
             <div class="form-group">
+
                 <label>番手</label>
+
                 <select id="clubType">
+
                     <option>1W</option>
                     <option>2W</option>
                     <option>3W</option>
@@ -671,11 +753,13 @@ button {
                     <option>5W</option>
                     <option>7W</option>
                     <option>9W</option>
+
                     <option>2U</option>
                     <option>3U</option>
                     <option>4U</option>
                     <option>5U</option>
                     <option>6U</option>
+
                     <option>1I</option>
                     <option>2I</option>
                     <option>3I</option>
@@ -685,30 +769,51 @@ button {
                     <option>7I</option>
                     <option>8I</option>
                     <option>9I</option>
+
                     <option>PW</option>
                     <option>AW</option>
                     <option>SW</option>
                     <option>LW</option>
+
                     <option>チッパー</option>
                     <option>パター</option>
                     <option>その他</option>
+
                 </select>
+
             </div>
 
+
             <div class="form-group">
+
                 <label>メーカー</label>
-                <input id="maker" placeholder="例：TaylorMade">
+
+                <input
+                    id="maker"
+                    placeholder="例：TaylorMade"
+                >
+
             </div>
+
 
             <div class="form-group full">
+
                 <label>商品名</label>
-                <input id="name" placeholder="例：Qi35">
+
+                <input
+                    id="name"
+                    placeholder="例：Qi35"
+                >
+
             </div>
 
-            <!-- 距離 -->
+
+            <!-- 飛距離 -->
 
             <div class="form-group">
+
                 <label>総飛距離</label>
+
                 <button
                     type="button"
                     class="secondary"
@@ -718,10 +823,14 @@ button {
                 >
                     選択してください
                 </button>
+
             </div>
 
+
             <div class="form-group">
+
                 <label>キャリー</label>
+
                 <button
                     type="button"
                     class="secondary"
@@ -731,12 +840,16 @@ button {
                 >
                     選択してください
                 </button>
+
             </div>
 
-            <!-- 重量 -->
+
+            <!-- クラブ重量 -->
 
             <div class="form-group">
+
                 <label>クラブ重量</label>
+
                 <button
                     type="button"
                     class="secondary"
@@ -746,12 +859,16 @@ button {
                 >
                     数字キーで入力
                 </button>
+
             </div>
 
-            <!-- 長さ -->
+
+            <!-- クラブ長さ -->
 
             <div class="form-group">
+
                 <label>クラブ長さ</label>
+
                 <button
                     type="button"
                     class="secondary"
@@ -761,12 +878,16 @@ button {
                 >
                     数字キーで入力
                 </button>
+
             </div>
 
-            <!-- 角度 -->
+
+            <!-- ロフト -->
 
             <div class="form-group">
+
                 <label>ロフト角</label>
+
                 <button
                     type="button"
                     class="secondary"
@@ -776,10 +897,16 @@ button {
                 >
                     数字キーで入力
                 </button>
+
             </div>
 
+
+            <!-- ライ -->
+
             <div class="form-group">
+
                 <label>ライ角</label>
+
                 <button
                     type="button"
                     class="secondary"
@@ -789,10 +916,16 @@ button {
                 >
                     数字キーで入力
                 </button>
+
             </div>
 
+
+            <!-- バンス -->
+
             <div class="form-group">
+
                 <label>バンス角</label>
+
                 <button
                     type="button"
                     class="secondary"
@@ -802,18 +935,30 @@ button {
                 >
                     数字キーで入力
                 </button>
+
             </div>
+
 
             <!-- シャフト -->
 
             <div class="form-group">
+
                 <label>シャフト名</label>
-                <input id="shaft" placeholder="例：VENTUS TR">
+
+                <input
+                    id="shaft"
+                    placeholder="例：VENTUS TR"
+                >
+
             </div>
 
+
             <div class="form-group">
+
                 <label>フレックス</label>
+
                 <select id="flex">
+
                     <option>R2</option>
                     <option>R</option>
                     <option>SR</option>
@@ -822,11 +967,18 @@ button {
                     <option>X</option>
                     <option>TX</option>
                     <option>その他</option>
+
                 </select>
+
             </div>
 
+
+            <!-- シャフト重量 -->
+
             <div class="form-group">
+
                 <label>シャフト重量</label>
+
                 <button
                     type="button"
                     class="secondary"
@@ -836,10 +988,16 @@ button {
                 >
                     数字キーで入力
                 </button>
+
             </div>
 
+
+            <!-- シャフト長さ -->
+
             <div class="form-group">
+
                 <label>シャフト長さ</label>
+
                 <button
                     type="button"
                     class="secondary"
@@ -849,49 +1007,73 @@ button {
                 >
                     数字キーで入力
                 </button>
+
             </div>
 
+
             <div class="form-group">
+
                 <label>キックポイント</label>
+
                 <select id="kickPoint">
+
                     <option>元調子</option>
                     <option>中元調子</option>
                     <option selected>中調子</option>
                     <option>先中調子</option>
                     <option>先調子</option>
                     <option>その他</option>
+
                 </select>
+
             </div>
+
 
             <div class="form-group">
+
                 <label>グリップ交換日</label>
-                <input id="gripDate" type="date">
+
+                <input
+                    id="gripDate"
+                    type="date"
+                >
+
             </div>
 
+
             <div class="form-group full">
+
                 <label>クラブ写真</label>
+
                 <input
                     id="photo"
                     type="file"
                     accept="image/*"
                 >
+
                 <img
                     id="preview"
                     class="preview"
                     style="display:none;"
                 >
+
             </div>
 
+
             <div class="form-group full">
+
                 <label>メモ</label>
+
                 <textarea
                     id="memo"
                     rows="4"
                     placeholder="クラブについてのメモ"
                 ></textarea>
+
             </div>
 
         </div>
+
 
         <div class="modal-actions">
 
@@ -911,22 +1093,24 @@ button {
 
         </div>
 
-        <!-- 削除は編集画面の一番下 -->
 
         <div
             id="deleteArea"
             class="delete-area"
             style="display:none;"
         >
+
             <button
                 class="danger"
                 onclick="deleteCurrentClub()"
             >
                 🗑️ このクラブを削除
             </button>
+
         </div>
 
     </div>
+
 </div>
 
 
@@ -934,7 +1118,10 @@ button {
      距離選択
 ========================= -->
 
-<div id="distancePicker" class="choice-panel">
+<div
+    id="distancePicker"
+    class="choice-panel"
+>
 
     <div class="choice-box">
 
@@ -956,14 +1143,18 @@ button {
         </button>
 
     </div>
+
 </div>
 
 
 <!-- =========================
-     数字入力
+     数字キー
 ========================= -->
 
-<div id="numberPicker" class="choice-panel">
+<div
+    id="numberPicker"
+    class="choice-panel"
+>
 
     <div class="choice-box">
 
@@ -1021,6 +1212,7 @@ button {
         </button>
 
     </div>
+
 </div>
 
 
@@ -1031,10 +1223,13 @@ button {
 ===================================================== */
 
 let clubs = [];
+
 let editingId = null;
+
 let currentPhoto = null;
 
-const STORAGE_KEY = "golfClubManagerData";
+const STORAGE_KEY =
+    "golfClubManagerData";
 
 let currentNumberField = null;
 let currentNumberUnit = "";
@@ -1042,7 +1237,75 @@ let currentNumberValue = "";
 
 
 /* =====================================================
-   保存・読み込み
+   番手の並び順
+===================================================== */
+
+const clubOrder = {
+
+    "1W": 10,
+    "2W": 20,
+    "3W": 30,
+    "4W": 40,
+    "5W": 50,
+    "7W": 60,
+    "9W": 70,
+
+    "2U": 80,
+    "3U": 90,
+    "4U": 100,
+    "5U": 110,
+    "6U": 120,
+
+    "1I": 130,
+    "2I": 140,
+    "3I": 150,
+    "4I": 160,
+    "5I": 170,
+    "6I": 180,
+    "7I": 190,
+    "8I": 200,
+    "9I": 210,
+
+    "PW": 220,
+    "AW": 230,
+    "SW": 240,
+    "LW": 250,
+
+    "チッパー": 260,
+    "パター": 270,
+    "その他": 999
+};
+
+
+/* =====================================================
+   番手順で並び替え
+===================================================== */
+
+function sortClubs(list) {
+
+    return [...list].sort((a, b) => {
+
+        const aOrder =
+            clubOrder[a.clubType] ?? 500;
+
+        const bOrder =
+            clubOrder[b.clubType] ?? 500;
+
+        if (aOrder !== bOrder) {
+            return aOrder - bOrder;
+        }
+
+        return String(a.name || "")
+            .localeCompare(
+                String(b.name || ""),
+                "ja"
+            );
+    });
+}
+
+
+/* =====================================================
+   保存
 ===================================================== */
 
 function saveData() {
@@ -1054,17 +1317,28 @@ function saveData() {
 }
 
 
+/* =====================================================
+   読み込み
+===================================================== */
+
 function loadData() {
 
     const saved =
-        localStorage.getItem(STORAGE_KEY);
+        localStorage.getItem(
+            STORAGE_KEY
+        );
 
     if (saved) {
 
         try {
-            clubs = JSON.parse(saved);
+
+            clubs =
+                JSON.parse(saved);
+
         } catch {
+
             clubs = [];
+
         }
 
     }
@@ -1080,22 +1354,29 @@ function loadData() {
 function renderClubs() {
 
     const grid =
-        document.getElementById("clubGrid");
+        document.getElementById(
+            "clubGrid"
+        );
 
     const keyword =
-        document.getElementById("search")
+        document.getElementById(
+            "search"
+        )
         .value
         .toLowerCase()
         .trim();
 
-    const filtered =
+
+    let filtered =
         clubs.filter(club => {
 
             const text = [
+
                 club.clubType,
                 club.maker,
                 club.name,
                 club.shaft
+
             ]
             .join(" ")
             .toLowerCase();
@@ -1104,14 +1385,32 @@ function renderClubs() {
         });
 
 
+    /* 番手順 */
+
+    filtered =
+        sortClubs(filtered);
+
+
     if (filtered.length === 0) {
 
         grid.innerHTML = `
+
             <div class="empty">
-                <div style="font-size:40px;">⛳</div>
-                <h3>クラブがありません</h3>
-                <p>「＋追加」からクラブを登録してください。</p>
+
+                <div style="font-size:40px;">
+                    ⛳
+                </div>
+
+                <h3>
+                    クラブがありません
+                </h3>
+
+                <p>
+                    「＋追加」からクラブを登録してください。
+                </p>
+
             </div>
+
         `;
 
         return;
@@ -1123,8 +1422,19 @@ function renderClubs() {
 
             const photo =
                 club.photo
-                ? `<img class="club-photo" src="${club.photo}">`
-                : `<div class="no-photo">⛳</div>`;
+
+                ? `
+                    <img
+                        class="club-photo"
+                        src="${club.photo}"
+                    >
+                  `
+
+                : `
+                    <div class="no-photo">
+                        ⛳
+                    </div>
+                  `;
 
 
             return `
@@ -1136,31 +1446,48 @@ function renderClubs() {
 
                     ${photo}
 
+
                     <div class="card-body">
 
-                        <div class="club-type">
-                            ${escapeHTML(
-                                club.clubType || "-"
-                            )}
+
+                        <div class="club-main">
+
+                            <div class="club-type">
+
+                                ${escapeHTML(
+                                    club.clubType || "-"
+                                )}
+
+                            </div>
+
+                            <div class="maker">
+
+                                ${escapeHTML(
+                                    club.maker ||
+                                    "メーカー未入力"
+                                )}
+
+                            </div>
+
+                            <div class="name">
+
+                                ${escapeHTML(
+                                    club.name ||
+                                    "商品名未入力"
+                                )}
+
+                            </div>
+
                         </div>
 
-                        <div class="maker">
-                            ${escapeHTML(
-                                club.maker || "メーカー未入力"
-                            )}
-                        </div>
-
-                        <div class="name">
-                            ${escapeHTML(
-                                club.name || "商品名未入力"
-                            )}
-                        </div>
 
                         <div class="distance">
 
                             <div class="distance-box">
 
-                                <small>飛距離</small>
+                                <small>
+                                    飛距離
+                                </small>
 
                                 <strong>
                                     ${escapeHTML(
@@ -1170,9 +1497,12 @@ function renderClubs() {
 
                             </div>
 
+
                             <div class="distance-box">
 
-                                <small>キャリー</small>
+                                <small>
+                                    キャリー
+                                </small>
 
                                 <strong>
                                     ${escapeHTML(
@@ -1184,21 +1514,38 @@ function renderClubs() {
 
                         </div>
 
+
                         <div class="card-mini-info">
 
-                            ${club.clubWeight
-                                ? "重量 " +
-                                  escapeHTML(club.clubWeight)
+                            ${
+                                club.clubWeight
+                                ? `
+                                    <span class="mini-label">
+                                        重量
+                                    </span>
+                                    ${escapeHTML(
+                                        club.clubWeight
+                                    )}
+                                  `
                                 : ""
                             }
 
-                            ${club.clubLength
-                                ? "　長さ " +
-                                  escapeHTML(club.clubLength)
+                            ${
+                                club.clubLength
+                                ? `
+                                    <br>
+                                    <span class="mini-label">
+                                        長さ
+                                    </span>
+                                    ${escapeHTML(
+                                        club.clubLength
+                                    )}
+                                  `
                                 : ""
                             }
 
                         </div>
+
 
                     </div>
 
@@ -1217,22 +1564,29 @@ function renderClubs() {
 function openDetail(id) {
 
     const club =
-        clubs.find(c => c.id === id);
+        clubs.find(
+            c => c.id === id
+        );
 
     if (!club) return;
 
+
     const content =
-        document.getElementById("detailContent");
+        document.getElementById(
+            "detailContent"
+        );
 
 
     const photo =
         club.photo
+
         ? `
             <img
                 class="detail-photo"
                 src="${club.photo}"
             >
           `
+
         : `
             <div class="detail-no-photo">
                 ⛳
@@ -1244,45 +1598,67 @@ function openDetail(id) {
 
         ${photo}
 
+
         <div class="detail-body">
 
             <div class="detail-title">
+
                 ${escapeHTML(
                     club.clubType || "-"
                 )}
+
             </div>
+
 
             <div class="detail-maker">
+
                 ${escapeHTML(
-                    club.maker || "メーカー未入力"
+                    club.maker ||
+                    "メーカー未入力"
                 )}
+
             </div>
 
+
             <div class="detail-name">
+
                 ${escapeHTML(
-                    club.name || "商品名未入力"
+                    club.name ||
+                    "商品名未入力"
                 )}
+
             </div>
 
 
             <div class="detail-distance">
 
                 <div class="big-distance">
-                    <small>総飛距離</small>
+
+                    <small>
+                        総飛距離
+                    </small>
+
                     <strong>
                         ${escapeHTML(
                             club.distance || "-"
                         )}
                     </strong>
+
                 </div>
 
+
                 <div class="big-distance">
-                    <small>キャリー</small>
+
+                    <small>
+                        キャリー
+                    </small>
+
                     <strong>
                         ${escapeHTML(
                             club.carry || "-"
                         )}
                     </strong>
+
                 </div>
 
             </div>
@@ -1350,41 +1726,60 @@ function openDetail(id) {
 
             ${
                 club.memo
+
                 ? `
                     <div class="detail-memo">
-                        <strong>メモ</strong><br><br>
-                        ${escapeHTML(club.memo)}
+
+                        <strong>
+                            メモ
+                        </strong>
+
+                        <br><br>
+
+                        ${escapeHTML(
+                            club.memo
+                        )}
+
                     </div>
                   `
+
                 : ""
             }
 
         </div>
+
     `;
 
 
     document.getElementById(
         "detailEditButton"
-    ).onclick = function() {
+    ).onclick =
+        function() {
 
-        closeDetail();
+            closeDetail();
 
-        setTimeout(() => {
-            openEditModal(id);
-        }, 100);
+            setTimeout(
+                () => openEditModal(id),
+                100
+            );
 
-    };
+        };
 
 
     document.getElementById(
         "detailModal"
-    ).style.display = "block";
+    ).style.display =
+        "block";
 }
 
 
-function detailSpec(title, value) {
+function detailSpec(
+    title,
+    value
+) {
 
     return `
+
         <div class="detail-spec">
 
             <small>
@@ -1392,10 +1787,13 @@ function detailSpec(title, value) {
             </small>
 
             <strong>
-                ${escapeHTML(value || "-")}
+                ${escapeHTML(
+                    value || "-"
+                )}
             </strong>
 
         </div>
+
     `;
 }
 
@@ -1404,7 +1802,8 @@ function closeDetail() {
 
     document.getElementById(
         "detailModal"
-    ).style.display = "none";
+    ).style.display =
+        "none";
 }
 
 
@@ -1418,14 +1817,17 @@ function openAddModal() {
 
     currentPhoto = null;
 
+
     document.getElementById(
         "modalTitle"
-    ).textContent = "新しいクラブ";
+    ).textContent =
+        "新しいクラブ";
 
 
     document.getElementById(
         "deleteArea"
-    ).style.display = "none";
+    ).style.display =
+        "none";
 
 
     clearForm();
@@ -1433,7 +1835,8 @@ function openAddModal() {
 
     document.getElementById(
         "modal"
-    ).style.display = "block";
+    ).style.display =
+        "block";
 }
 
 
@@ -1444,7 +1847,9 @@ function openAddModal() {
 function openEditModal(id) {
 
     const club =
-        clubs.find(c => c.id === id);
+        clubs.find(
+            c => c.id === id
+        );
 
     if (!club) return;
 
@@ -1457,12 +1862,14 @@ function openEditModal(id) {
 
     document.getElementById(
         "modalTitle"
-    ).textContent = "クラブを編集";
+    ).textContent =
+        "クラブを編集";
 
 
     document.getElementById(
         "deleteArea"
-    ).style.display = "block";
+    ).style.display =
+        "block";
 
 
     document.getElementById(
@@ -1569,7 +1976,9 @@ function openEditModal(id) {
 
 
     const preview =
-        document.getElementById("preview");
+        document.getElementById(
+            "preview"
+        );
 
 
     if (currentPhoto) {
@@ -1594,7 +2003,8 @@ function openEditModal(id) {
 
     document.getElementById(
         "modal"
-    ).style.display = "block";
+    ).style.display =
+        "block";
 }
 
 
@@ -1604,10 +2014,9 @@ function setButtonValue(
     emptyText
 ) {
 
-    const button =
-        document.getElementById(id);
-
-    button.textContent =
+    document.getElementById(
+        id
+    ).textContent =
         value || emptyText;
 }
 
@@ -1620,42 +2029,51 @@ function clearForm() {
 
     document.getElementById(
         "clubType"
-    ).value = "1W";
+    ).value =
+        "1W";
 
     document.getElementById(
         "maker"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "name"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "shaft"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "flex"
-    ).value = "S";
+    ).value =
+        "S";
 
     document.getElementById(
         "kickPoint"
-    ).value = "中調子";
+    ).value =
+        "中調子";
 
     document.getElementById(
         "gripDate"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "memo"
-    ).value = "";
+    ).value =
+        "";
 
     document.getElementById(
         "photo"
-    ).value = "";
+    ).value =
+        "";
 
 
-    const buttonDefaults = {
+    const defaults = {
 
         distanceButton:
             "選択してください",
@@ -1683,22 +2101,25 @@ function clearForm() {
 
         shaftLengthButton:
             "数字キーで入力"
+
     };
 
 
-    Object.keys(buttonDefaults)
+    Object.keys(defaults)
         .forEach(id => {
 
-            document.getElementById(id)
-                .textContent =
-                buttonDefaults[id];
+            document.getElementById(
+                id
+            ).textContent =
+                defaults[id];
 
         });
 
 
     document.getElementById(
         "preview"
-    ).style.display = "none";
+    ).style.display =
+        "none";
 }
 
 
@@ -1811,8 +2232,11 @@ function saveClub() {
         if (index !== -1) {
 
             clubs[index] = {
+
                 ...clubs[index],
+
                 ...data
+
             };
 
         }
@@ -1839,18 +2263,27 @@ function saveClub() {
 }
 
 
+/* =====================================================
+   ボタン値取得
+===================================================== */
+
 function getButtonValue(id) {
 
     const value =
-        document.getElementById(id)
-        .textContent;
+        document.getElementById(
+            id
+        ).textContent;
+
 
     if (
         value === "選択してください" ||
         value === "数字キーで入力"
     ) {
+
         return "";
+
     }
+
 
     return value;
 }
@@ -1894,6 +2327,7 @@ document.getElementById(
 
                 preview.style.display =
                     "block";
+
             };
 
 
@@ -1905,20 +2339,19 @@ document.getElementById(
 
 /* =====================================================
    距離選択
-   5ヤード単位
+   50〜350yd
+   5yd刻み
 ===================================================== */
 
 function openDistancePicker(field) {
 
-    const title =
+    document.getElementById(
+        "distancePickerTitle"
+    ).textContent =
+
         field === "distance"
         ? "総飛距離を選択"
         : "キャリーを選択";
-
-
-    document.getElementById(
-        "distancePickerTitle"
-    ).textContent = title;
 
 
     const choices =
@@ -1949,19 +2382,18 @@ function openDistancePicker(field) {
             </button>
 
         `;
+
     }
 
 
-    choices.innerHTML = html;
+    choices.innerHTML =
+        html;
 
 
     document.getElementById(
         "distancePicker"
-    ).style.display = "flex";
-
-
-    window.currentDistanceField =
-        field;
+    ).style.display =
+        "flex";
 }
 
 
@@ -1970,12 +2402,9 @@ function selectDistance(
     value
 ) {
 
-    const button =
-        document.getElementById(
-            field + "Button"
-        );
-
-    button.textContent =
+    document.getElementById(
+        field + "Button"
+    ).textContent =
         value;
 
 
@@ -2017,14 +2446,15 @@ function openNumberPicker(
         existing === "選択してください"
     ) {
 
-        currentNumberValue = "";
+        currentNumberValue =
+            "";
 
     } else {
 
         currentNumberValue =
             existing
-            .replace(unit, "")
-            .trim();
+                .replace(unit, "")
+                .trim();
 
     }
 
@@ -2040,19 +2470,17 @@ function openNumberPicker(
 
     document.getElementById(
         "numberPicker"
-    ).style.display = "flex";
+    ).style.display =
+        "flex";
 }
 
 
 function updateNumberPreview() {
 
-    const preview =
-        document.getElementById(
-            "numberPreview"
-        );
+    document.getElementById(
+        "numberPreview"
+    ).textContent =
 
-
-    preview.textContent =
         (currentNumberValue || "0")
         + " "
         + currentNumberUnit;
@@ -2065,20 +2493,28 @@ function pressKey(value) {
 
         if (
             currentNumberValue
-            .includes(".")
+                .includes(".")
         ) {
+
             return;
+
         }
+
 
         if (
             currentNumberValue === ""
         ) {
-            currentNumberValue = "0";
+
+            currentNumberValue =
+                "0";
+
         }
+
     }
 
 
-    currentNumberValue += value;
+    currentNumberValue +=
+        value;
 
 
     updateNumberPreview();
@@ -2100,7 +2536,8 @@ function backspaceKey() {
 
 function clearNumber() {
 
-    currentNumberValue = "";
+    currentNumberValue =
+        "";
 
     updateNumberPreview();
 }
@@ -2120,13 +2557,10 @@ function confirmNumber() {
     }
 
 
-    const button =
-        document.getElementById(
-            currentNumberField + "Button"
-        );
+    document.getElementById(
+        currentNumberField + "Button"
+    ).textContent =
 
-
-    button.textContent =
         currentNumberValue
         + " "
         + currentNumberUnit;
@@ -2146,7 +2580,8 @@ function closePicker(id) {
 
     document.getElementById(
         id
-    ).style.display = "none";
+    ).style.display =
+        "none";
 }
 
 
@@ -2158,7 +2593,8 @@ function closeModal() {
 
     document.getElementById(
         "modal"
-    ).style.display = "none";
+    ).style.display =
+        "none";
 }
 
 
@@ -2182,9 +2618,15 @@ function deleteCurrentClub() {
 
     const ok =
         confirm(
+
             "「" +
-            (club.name || club.clubType) +
-            "」を削除しますか？\n\nこの操作は元に戻せません。"
+            (
+                club.name ||
+                club.clubType
+            ) +
+            "」を削除しますか？\n\n" +
+            "この操作は元に戻せません。"
+
         );
 
 
