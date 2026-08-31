@@ -33,27 +33,11 @@ header p{
     margin:auto;
     padding:8px;
 }
-/* =========================
-   検索・追加
-========================= */
 .toolbar{
     display:flex;
-    gap:8px;
-    margin-bottom:9px;
+    gap:7px;
+    margin-bottom:5px;
 }
-.toolbar .search{
-    flex:1;
-    min-width:0;
-}
-.toolbar .add-button{
-    flex:0 0 78px;
-    white-space:nowrap;
-    padding-left:8px;
-    padding-right:8px;
-}
-/* =========================
-   共通
-========================= */
 input,select,textarea,button{
     font:inherit;
 }
@@ -81,116 +65,137 @@ button{
     background:#d9363e;
     color:white;
 }
-/* =========================
+/* =====================================================
    一覧
-========================= */
+===================================================== */
+/*
+   一覧は1列。
+   写真 / 番手 / メーカー / 商品名 / 飛距離 / キャリー
+   の6列構成。
+*/
+.club-list-header,
+.club-card{
+    display:grid;
+    grid-template-columns:
+        58px
+        58px
+        minmax(0,1fr)
+        minmax(0,1.15fr)
+        70px
+        70px;
+    column-gap:6px;
+    align-items:center;
+}
+.club-list-header{
+    min-height:27px;
+    padding:0 7px;
+    margin-bottom:3px;
+    color:#555;
+    font-size:10px;
+    font-weight:700;
+}
+.club-list-header > div{
+    min-width:0;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.club-list-header .head-photo{
+    text-align:center;
+}
+.club-list-header .head-distance,
+.club-list-header .head-carry{
+    text-align:center;
+}
 .club-grid{
     display:flex;
     flex-direction:column;
-    gap:6px;
+    gap:5px;
 }
 .club-card{
-    width:100%;
-    min-height:76px;
-    display:grid;
-    /*
-       写真
-       番手
-       メーカー
-       名称
-       飛距離
-       キャリー
-    */
-    grid-template-columns:
-        72px
-        58px
-        minmax(90px,1fr)
-        minmax(110px,1.15fr)
-        minmax(90px,1fr)
-        minmax(90px,1fr);
-    align-items:center;
     background:white;
-    border-radius:9px;
+    border-radius:8px;
     overflow:hidden;
-    box-shadow:0 2px 7px rgba(0,0,0,.08);
+    box-shadow:0 2px 6px rgba(0,0,0,.08);
     cursor:pointer;
+    min-height:60px;
+    padding:0 7px 0 0;
 }
 .club-card:active{
     transform:scale(.99);
 }
-/* 写真 */
-.club-photo,
-.no-photo{
-    width:72px;
-    height:76px;
+.club-photo-wrap{
+    width:58px;
+    height:60px;
+    overflow:hidden;
+    background:#e9eceb;
+    align-self:stretch;
 }
 .club-photo{
+    width:100%;
+    height:100%;
     object-fit:cover;
-    background:#e9eceb;
+    display:block;
 }
 .no-photo{
+    width:100%;
+    height:100%;
     display:flex;
     align-items:center;
     justify-content:center;
     background:#e9eceb;
     color:#777;
-    font-size:27px;
-}
-/* 一覧内の項目 */
-.list-item{
-    min-width:0;
-    padding:0 8px;
-    overflow:hidden;
+    font-size:25px;
 }
 .club-type{
+    min-width:0;
     color:#126b3a;
-    font-size:14px;
+    font-size:16px;
     font-weight:800;
     white-space:nowrap;
     overflow:hidden;
-    text-overflow:ellipsis;
+    text-overflow:clip;
 }
-.list-maker,
-.list-name,
-.list-distance{
+.maker{
     min-width:0;
-    padding:0 8px;
-    font-size:11px;
-    font-weight:600;
+    font-size:13px;
+    font-weight:700;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
 }
-.list-name{
+.name{
+    min-width:0;
+    font-size:13px;
     font-weight:700;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
-/* 飛距離・キャリー */
-.list-distance{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    line-height:1.25;
+.club-distance-value{
+    min-width:0;
+    text-align:center;
+    font-size:13px;
+    font-weight:700;
+    white-space:nowrap;
+    overflow:visible;
 }
-.list-distance-label{
-    color:#777;
-    font-size:8px;
-    font-weight:500;
+.club-carry-value{
+    min-width:0;
+    text-align:center;
+    font-size:13px;
+    font-weight:700;
+    white-space:nowrap;
+    overflow:visible;
 }
-.list-distance-value{
-    margin-top:2px;
-    font-size:11px;
-    font-weight:600;
-    color:#222;
-}
-/* 空 */
 .empty{
     text-align:center;
     padding:50px 20px;
     color:#777;
 }
-/* =========================
+/* =====================================================
    詳細
-========================= */
+===================================================== */
 .detail-modal{
     display:none;
     position:fixed;
@@ -280,7 +285,9 @@ button{
     font-size:23px;
     margin-top:3px;
 }
-/* スペック見出し */
+/* =====================================================
+   スペック
+===================================================== */
 .spec-section-title{
     margin:18px 0 8px;
     padding:8px 10px;
@@ -290,7 +297,6 @@ button{
     font-size:15px;
     font-weight:800;
 }
-/* スペック */
 .detail-specs{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -311,10 +317,9 @@ button{
     margin-top:2px;
     font-size:14px;
 }
-/* =========================
+/* =====================================================
    メモ
-   改行しても完全に左揃え
-========================= */
+===================================================== */
 .detail-memo{
     background:#fffbe8;
     padding:12px;
@@ -324,15 +329,10 @@ button{
     text-align:left;
     line-height:1.6;
     word-break:break-word;
-    /*
-       日本語の改行でも各行の開始位置を
-       常に同じ位置にする
-    */
-    direction:ltr;
 }
-/* =========================
+/* =====================================================
    編集
-========================= */
+===================================================== */
 .modal{
     display:none;
     position:fixed;
@@ -392,9 +392,9 @@ button{
 .delete-area button{
     width:100%;
 }
-/* =========================
+/* =====================================================
    選択パネル
-========================= */
+===================================================== */
 .choice-panel{
     display:none;
     position:fixed;
@@ -456,53 +456,72 @@ button{
     font-weight:800;
     margin-bottom:10px;
 }
-/* =========================
+/* =====================================================
    スマホ
-========================= */
+===================================================== */
 @media(max-width:600px){
-    /*
-       iPhoneでも1列の横長表示。
-       写真＋番手＋メーカー＋名称＋飛距離＋キャリー
-    */
+    .container{
+        padding:7px 6px;
+    }
     .toolbar{
         gap:6px;
     }
-    .toolbar .add-button{
-        flex:0 0 82px;
-        font-size:13px;
+    .toolbar .search{
+        min-width:0;
+        flex:1;
+    }
+    .toolbar .primary{
+        flex:0 0 70px;
+        padding-left:5px;
+        padding-right:5px;
+        white-space:nowrap;
+    }
+    /*
+       iPhoneでは6列を画面内に収める。
+       番手・距離・キャリーは固定幅。
+       メーカー・商品名だけ残り幅を使う。
+    */
+    .club-list-header,
+    .club-card{
+        grid-template-columns:
+            48px
+            52px
+            minmax(0,1fr)
+            minmax(0,1.12fr)
+            61px
+            61px;
+        column-gap:4px;
+    }
+    .club-list-header{
+        min-height:25px;
+        padding:0 5px;
+        font-size:9px;
     }
     .club-card{
-        min-height:68px;
-        grid-template-columns:
-            58px
-            48px
-            minmax(70px,1fr)
-            minmax(78px,1.1fr)
-            minmax(58px,.9fr)
-            minmax(58px,.9fr);
+        min-height:54px;
+        padding-right:5px;
     }
-    .club-photo,
+    .club-photo-wrap{
+        width:48px;
+        height:54px;
+    }
     .no-photo{
-        width:58px;
-        height:68px;
-    }
-    .list-item{
-        padding:0 5px;
+        font-size:21px;
     }
     .club-type{
+        font-size:14px;
+        font-weight:800;
+    }
+    .maker,
+    .name,
+    .club-distance-value,
+    .club-carry-value{
         font-size:12px;
+        font-weight:700;
     }
-    .list-maker,
-    .list-name,
-    .list-distance{
-        padding:0 5px;
-        font-size:9px;
-    }
-    .list-distance-label{
-        font-size:7px;
-    }
-    .list-distance-value{
-        font-size:9px;
+    .club-distance-value,
+    .club-carry-value{
+        font-size:12px;
     }
     .form-grid{
         grid-template-columns:1fr;
@@ -515,6 +534,38 @@ button{
     }
     .detail-distance{
         grid-template-columns:1fr 1fr;
+    }
+}
+/* =====================================================
+   非常に狭いiPhone
+===================================================== */
+@media(max-width:370px){
+    .club-list-header,
+    .club-card{
+        grid-template-columns:
+            44px
+            48px
+            minmax(0,1fr)
+            minmax(0,1.08fr)
+            57px
+            57px;
+        column-gap:3px;
+    }
+    .club-photo-wrap{
+        width:44px;
+        height:52px;
+    }
+    .club-list-header{
+        font-size:8px;
+    }
+    .club-type{
+        font-size:13px;
+    }
+    .maker,
+    .name,
+    .club-distance-value,
+    .club-carry-value{
+        font-size:11px;
     }
 }
 </style>
@@ -533,18 +584,45 @@ button{
         placeholder="🔍 番手・メーカー・商品名"
     >
     <button
-        class="primary add-button"
+        class="primary"
         onclick="openAddModal()"
     >
         ＋追加
     </button>
 </div>
-<div id="clubGrid" class="club-grid"></div>
+<!-- 一覧の項目名 -->
+<div class="club-list-header">
+    <div class="head-photo">
+        写真
+    </div>
+    <div>
+        番手
+    </div>
+    <div>
+        メーカー
+    </div>
+    <div>
+        商品名
+    </div>
+    <div class="head-distance">
+        飛距離
+    </div>
+    <div class="head-carry">
+        キャリー
+    </div>
 </div>
-<!-- =========================
+<div
+    id="clubGrid"
+    class="club-grid"
+></div>
+</div>
+<!-- =====================================================
      詳細
-========================= -->
-<div id="detailModal" class="detail-modal">
+===================================================== -->
+<div
+    id="detailModal"
+    class="detail-modal"
+>
 <div class="detail-content">
     <div class="detail-header">
         <button
@@ -553,7 +631,9 @@ button{
         >
             ← 戻る
         </button>
-        <h2>クラブ詳細</h2>
+        <h2>
+            クラブ詳細
+        </h2>
         <button
             id="detailEditButton"
             class="edit-top-button"
@@ -564,15 +644,22 @@ button{
     <div id="detailContent"></div>
 </div>
 </div>
-<!-- =========================
+<!-- =====================================================
      編集
-========================= -->
-<div id="modal" class="modal">
+===================================================== -->
+<div
+    id="modal"
+    class="modal"
+>
 <div class="modal-content">
-    <h2 id="modalTitle">新しいクラブ</h2>
+    <h2 id="modalTitle">
+        新しいクラブ
+    </h2>
     <div class="form-grid">
         <div class="form-group">
-            <label>番手</label>
+            <label>
+                番手
+            </label>
             <select id="clubType">
                 <option>1W</option>
                 <option>2W</option>
@@ -605,21 +692,27 @@ button{
             </select>
         </div>
         <div class="form-group">
-            <label>メーカー</label>
+            <label>
+                メーカー
+            </label>
             <input
                 id="maker"
                 placeholder="例：TaylorMade"
             >
         </div>
         <div class="form-group full">
-            <label>商品名</label>
+            <label>
+                商品名
+            </label>
             <input
                 id="name"
                 placeholder="例：Qi35"
             >
         </div>
         <div class="form-group">
-            <label>総飛距離</label>
+            <label>
+                総飛距離
+            </label>
             <button
                 type="button"
                 class="secondary"
@@ -631,7 +724,9 @@ button{
             </button>
         </div>
         <div class="form-group">
-            <label>キャリー</label>
+            <label>
+                キャリー
+            </label>
             <button
                 type="button"
                 class="secondary"
@@ -643,7 +738,9 @@ button{
             </button>
         </div>
         <div class="form-group">
-            <label>クラブ重量</label>
+            <label>
+                クラブ重量
+            </label>
             <button
                 type="button"
                 class="secondary"
@@ -655,7 +752,9 @@ button{
             </button>
         </div>
         <div class="form-group">
-            <label>クラブ長さ</label>
+            <label>
+                クラブ長さ
+            </label>
             <button
                 type="button"
                 class="secondary"
@@ -667,7 +766,9 @@ button{
             </button>
         </div>
         <div class="form-group">
-            <label>ロフト角</label>
+            <label>
+                ロフト角
+            </label>
             <button
                 type="button"
                 class="secondary"
@@ -679,7 +780,9 @@ button{
             </button>
         </div>
         <div class="form-group">
-            <label>ライ角</label>
+            <label>
+                ライ角
+            </label>
             <button
                 type="button"
                 class="secondary"
@@ -691,7 +794,9 @@ button{
             </button>
         </div>
         <div class="form-group">
-            <label>バンス角</label>
+            <label>
+                バンス角
+            </label>
             <button
                 type="button"
                 class="secondary"
@@ -703,14 +808,18 @@ button{
             </button>
         </div>
         <div class="form-group">
-            <label>シャフト名</label>
+            <label>
+                シャフト名
+            </label>
             <input
                 id="shaft"
                 placeholder="例：VENTUS TR"
             >
         </div>
         <div class="form-group">
-            <label>フレックス</label>
+            <label>
+                フレックス
+            </label>
             <select id="flex">
                 <option>R2</option>
                 <option>R</option>
@@ -723,7 +832,9 @@ button{
             </select>
         </div>
         <div class="form-group">
-            <label>シャフト重量</label>
+            <label>
+                シャフト重量
+            </label>
             <button
                 type="button"
                 class="secondary"
@@ -735,7 +846,9 @@ button{
             </button>
         </div>
         <div class="form-group">
-            <label>シャフト長さ</label>
+            <label>
+                シャフト長さ
+            </label>
             <button
                 type="button"
                 class="secondary"
@@ -747,7 +860,9 @@ button{
             </button>
         </div>
         <div class="form-group">
-            <label>キックポイント</label>
+            <label>
+                キックポイント
+            </label>
             <select id="kickPoint">
                 <option>元調子</option>
                 <option>中元調子</option>
@@ -758,14 +873,18 @@ button{
             </select>
         </div>
         <div class="form-group">
-            <label>グリップ交換日</label>
+            <label>
+                グリップ交換日
+            </label>
             <input
                 id="gripDate"
                 type="date"
             >
         </div>
         <div class="form-group full">
-            <label>クラブ写真</label>
+            <label>
+                クラブ写真
+            </label>
             <input
                 id="photo"
                 type="file"
@@ -778,7 +897,9 @@ button{
             >
         </div>
         <div class="form-group full">
-            <label>メモ</label>
+            <label>
+                メモ
+            </label>
             <textarea
                 id="memo"
                 rows="4"
@@ -814,9 +935,9 @@ button{
     </div>
 </div>
 </div>
-<!-- =========================
+<!-- =====================================================
      距離選択
-========================= -->
+===================================================== -->
 <div
     id="distancePicker"
     class="choice-panel"
@@ -838,9 +959,9 @@ button{
     </button>
 </div>
 </div>
-<!-- =========================
+<!-- =====================================================
      数字キー
-========================= -->
+===================================================== -->
 <div
     id="numberPicker"
     class="choice-panel"
@@ -859,51 +980,75 @@ button{
         <button
             class="key"
             onclick="pressKey('1')"
-        >1</button>
+        >
+            1
+        </button>
         <button
             class="key"
             onclick="pressKey('2')"
-        >2</button>
+        >
+            2
+        </button>
         <button
             class="key"
             onclick="pressKey('3')"
-        >3</button>
+        >
+            3
+        </button>
         <button
             class="key"
             onclick="pressKey('4')"
-        >4</button>
+        >
+            4
+        </button>
         <button
             class="key"
             onclick="pressKey('5')"
-        >5</button>
+        >
+            5
+        </button>
         <button
             class="key"
             onclick="pressKey('6')"
-        >6</button>
+        >
+            6
+        </button>
         <button
             class="key"
             onclick="pressKey('7')"
-        >7</button>
+        >
+            7
+        </button>
         <button
             class="key"
             onclick="pressKey('8')"
-        >8</button>
+        >
+            8
+        </button>
         <button
             class="key"
             onclick="pressKey('9')"
-        >9</button>
+        >
+            9
+        </button>
         <button
             class="key"
             onclick="pressKey('.')"
-        >.</button>
+        >
+            .
+        </button>
         <button
             class="key"
             onclick="pressKey('0')"
-        >0</button>
+        >
+            0
+        </button>
         <button
             class="key"
             onclick="backspaceKey()"
-        >⌫</button>
+        >
+            ⌫
+        </button>
         <button
             class="key key-wide"
             onclick="clearNumber()"
@@ -995,7 +1140,9 @@ function renderClubs(){
                 club.maker,
                 club.name,
                 club.shaft
-            ].join(" ").toLowerCase();
+            ]
+            .join(" ")
+            .toLowerCase();
             return text.includes(keyword);
         })
         .sort((a,b)=>{
@@ -1033,63 +1180,65 @@ function renderClubs(){
     grid.innerHTML=filtered.map(club=>{
         const photo=club.photo
             ?`
-                <img
-                    class="club-photo"
-                    src="${club.photo}"
-                >
-             `
-            :`
-                <div class="no-photo">
-                    ⛳
+                <div class="club-photo-wrap">
+                    <img
+                        class="club-photo"
+                        src="${club.photo}"
+                    >
                 </div>
-             `;
+              `
+            :`
+                <div class="club-photo-wrap">
+                    <div class="no-photo">
+                        ⛳
+                    </div>
+                </div>
+              `;
         return`
             <div
                 class="club-card"
                 onclick="openDetail('${club.id}')"
             >
                 ${photo}
-                <!-- 番手 -->
-                <div class="list-item">
-                    <div class="club-type">
-                        ${escapeHTML(
-                            club.clubType||"-"
-                        )}
-                    </div>
+                <div
+                    class="club-type"
+                    title="${escapeHTML(
+                        club.clubType||"-"
+                    )}"
+                >
+                    ${escapeHTML(
+                        club.clubType||"-"
+                    )}
                 </div>
-                <!-- メーカー -->
-                <div class="list-maker">
+                <div
+                    class="maker"
+                    title="${escapeHTML(
+                        club.maker||""
+                    )}"
+                >
                     ${escapeHTML(
                         club.maker||"メーカー未入力"
                     )}
                 </div>
-                <!-- 名称 -->
-                <div class="list-name">
+                <div
+                    class="name"
+                    title="${escapeHTML(
+                        club.name||""
+                    )}"
+                >
                     ${escapeHTML(
                         club.name||"商品名未入力"
                     )}
                 </div>
-                <!-- 飛距離 -->
-                <div class="list-distance">
-                    <div class="list-distance-label">
-                        飛距離
-                    </div>
-                    <div class="list-distance-value">
-                        ${escapeHTML(
-                            club.distance||"-"
-                        )}
-                    </div>
+                <div class="club-distance-value">
+                    ${escapeHTML(
+                        club.distance||"-"
+                    )}
                 </div>
-                <!-- キャリー -->
-                <div class="list-distance">
-                    <div class="list-distance-label">
-                        キャリー
-                    </div>
-                    <div class="list-distance-value">
-                        ${escapeHTML(
-                            club.carry||"-"
-                        )}
-                    </div>
+                <div class="club-carry-value">
+                    ${escapeHTML(
+                        club.carry||"-"
+                    )}
                 </div>
             </div>
         `;
@@ -1112,12 +1261,12 @@ function openDetail(id){
                 class="detail-photo"
                 src="${club.photo}"
             >
-         `
+          `
         :`
             <div class="detail-no-photo">
                 ⛳
             </div>
-         `;
+          `;
     content.innerHTML=`
         ${photo}
         <div class="detail-body">
@@ -1215,10 +1364,12 @@ function openDetail(id){
             ${
                 club.memo
                 ?`
-                    <div class="detail-memo">${escapeHTML(
-                        club.memo
-                    )}</div>
-                 `
+                    <div class="detail-memo">
+                        ${escapeHTML(
+                            club.memo
+                        )}
+                    </div>
+                  `
                 :""
             }
         </div>
@@ -1287,22 +1438,30 @@ function openEditModal(id){
     document.getElementById(
         "deleteArea"
     ).style.display="block";
-    document.getElementById("clubType").value=
-        club.clubType||"1W";
-    document.getElementById("maker").value=
-        club.maker||"";
-    document.getElementById("name").value=
-        club.name||"";
-    document.getElementById("shaft").value=
-        club.shaft||"";
-    document.getElementById("flex").value=
-        club.flex||"S";
-    document.getElementById("kickPoint").value=
-        club.kickPoint||"中調子";
-    document.getElementById("gripDate").value=
-        club.gripDate||"";
-    document.getElementById("memo").value=
-        club.memo||"";
+    document.getElementById(
+        "clubType"
+    ).value=club.clubType||"1W";
+    document.getElementById(
+        "maker"
+    ).value=club.maker||"";
+    document.getElementById(
+        "name"
+    ).value=club.name||"";
+    document.getElementById(
+        "shaft"
+    ).value=club.shaft||"";
+    document.getElementById(
+        "flex"
+    ).value=club.flex||"S";
+    document.getElementById(
+        "kickPoint"
+    ).value=club.kickPoint||"中調子";
+    document.getElementById(
+        "gripDate"
+    ).value=club.gripDate||"";
+    document.getElementById(
+        "memo"
+    ).value=club.memo||"";
     setButtonValue(
         "distanceButton",
         club.distance,
@@ -1364,23 +1523,46 @@ function openEditModal(id){
         "modal"
     ).style.display="block";
 }
-function setButtonValue(id,value,emptyText){
-    document.getElementById(id).textContent=
-        value||emptyText;
+function setButtonValue(
+    id,
+    value,
+    emptyText
+){
+    document.getElementById(
+        id
+    ).textContent=value||emptyText;
 }
 /* =====================================================
    フォーム初期化
 ===================================================== */
 function clearForm(){
-    document.getElementById("clubType").value="1W";
-    document.getElementById("maker").value="";
-    document.getElementById("name").value="";
-    document.getElementById("shaft").value="";
-    document.getElementById("flex").value="S";
-    document.getElementById("kickPoint").value="中調子";
-    document.getElementById("gripDate").value="";
-    document.getElementById("memo").value="";
-    document.getElementById("photo").value="";
+    document.getElementById(
+        "clubType"
+    ).value="1W";
+    document.getElementById(
+        "maker"
+    ).value="";
+    document.getElementById(
+        "name"
+    ).value="";
+    document.getElementById(
+        "shaft"
+    ).value="";
+    document.getElementById(
+        "flex"
+    ).value="S";
+    document.getElementById(
+        "kickPoint"
+    ).value="中調子";
+    document.getElementById(
+        "gripDate"
+    ).value="";
+    document.getElementById(
+        "memo"
+    ).value="";
+    document.getElementById(
+        "photo"
+    ).value="";
     const defaults={
         distanceButton:"選択してください",
         carryButton:"選択してください",
@@ -1535,10 +1717,7 @@ function openDistancePicker(field){
         html+=`
             <button
                 class="choice-button"
-                onclick="selectDistance(
-                    '${field}',
-                    '${i} yd'
-                )"
+                onclick="selectDistance('${field}','${i} yd')"
             >
                 ${i} yd
             </button>
@@ -1549,7 +1728,10 @@ function openDistancePicker(field){
         "distancePicker"
     ).style.display="flex";
 }
-function selectDistance(field,value){
+function selectDistance(
+    field,
+    value
+){
     document.getElementById(
         field+"Button"
     ).textContent=value;
