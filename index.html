@@ -34,614 +34,599 @@ header p{
     margin:auto;
     padding:8px;
 }
-/* =====================================================
-   検索・追加
-===================================================== */
+
 .toolbar{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) 100px;
-    gap:7px;
-    margin-bottom:6px;
+display:grid;
+grid-template-columns:minmax(0,1fr) 100px;
+gap:7px;
+margin-bottom:6px;
 }
 input,
 select,
 textarea,
 button{
-    font:inherit;
+font:inherit;
 }
 input,
 select,
 textarea{
-    width:100%;
-    padding:9px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    background:white;
+width:100%;
+padding:9px;
+border:1px solid #ccc;
+border-radius:8px;
+background:white;
 }
 button{
-    border:0;
-    border-radius:8px;
-    padding:9px 13px;
-    cursor:pointer;
+border:0;
+border-radius:8px;
+padding:9px 13px;
+cursor:pointer;
 }
 .primary{
-    background:#126b3a;
-    color:white;
+background:#126b3a;
+color:white;
 }
 .secondary{
-    background:#e5e9e7;
+background:#e5e9e7;
 }
 .danger{
-    background:#d9363e;
-    color:white;
+background:#d9363e;
+color:white;
 }
-/* =====================================================
-   一覧見出し
-   写真｜番手｜メーカー｜商品名｜飛距離｜キャリー
-===================================================== */
+
 .list-header{
-    display:grid;
-    grid-template-columns:
-        50px
-        76px
-        minmax(0,1fr)
-        minmax(0,1.08fr)
-        62px
-        62px;
-    gap:4px;
-    align-items:center;
-    padding:5px 5px;
-    margin-bottom:4px;
-    color:#444;
-    font-size:12px;
-    font-weight:800;
-    background:#e7ebe9;
-    border-radius:7px;
+display:grid;
+grid-template-columns:
+50px
+76px
+minmax(0,1fr)
+minmax(0,1.08fr)
+62px
+62px;
+gap:4px;
+align-items:center;
+padding:5px 5px;
+margin-bottom:4px;
+color:#444;
+font-size:12px;
+font-weight:800;
+background:#e7ebe9;
+border-radius:7px;
 }
 .list-header div{
-    min-width:0;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+min-width:0;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
 }
 .list-header .header-photo,
 .list-header .header-type,
 .list-header .header-distance{
-    text-align:center;
+text-align:center;
 }
-/* ★ 番手とメーカーの間を約2文字分広げる */
 .list-header > div:nth-child(3){
-    padding-left:2em;
+padding-left:2em;
 }
-/* =====================================================
-   クラブ一覧
-===================================================== */
+
 .club-grid{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
+display:flex;
+flex-direction:column;
+gap:5px;
 }
 .club-card{
-    width:100%;
-    display:grid;
-    grid-template-columns:
-        50px
-        76px
-        minmax(0,1fr)
-        minmax(0,1.08fr)
-        62px
-        62px;
-    gap:4px;
-    align-items:center;
-    background:white;
-    border-radius:8px;
-    padding:4px 5px;
-    box-shadow:0 1px 5px rgba(0,0,0,.08);
-    cursor:pointer;
-    min-width:0;
+width:100%;
+display:grid;
+grid-template-columns:
+50px
+76px
+minmax(0,1fr)
+minmax(0,1.08fr)
+62px
+62px;
+gap:4px;
+align-items:center;
+background:white;
+border-radius:8px;
+padding:4px 5px;
+box-shadow:0 1px 5px rgba(0,0,0,.08);
+cursor:pointer;
+min-width:0;
 }
 .club-card:active{
-    transform:scale(.985);
+transform:scale(.985);
 }
-/* ★ 番手とメーカーの間を約2文字分広げる */
 .club-card .maker{
-    padding-left:2em;
+padding-left:2em;
 }
-/* =====================================================
-   写真
-===================================================== */
+
 .club-photo,
 .no-photo{
-    width:50px;
-    height:48px;
-    border-radius:6px;
-    display:block;
-    overflow:hidden;
+width:50px;
+height:48px;
+border-radius:6px;
+display:block;
+overflow:hidden;
 }
 .club-photo{
-    object-fit:cover;
-    background:#e9eceb;
+object-fit:cover;
+background:#e9eceb;
 }
 .no-photo{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#e9eceb;
-    color:#777;
-    font-size:21px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#e9eceb;
+color:#777;
+font-size:21px;
 }
-/* =====================================================
-   番手
-===================================================== */
+
 .club-type{
-    width:76px;
-    min-width:76px;
-    color:#126b3a;
-    font-size:14px;
-    font-weight:800;
-    text-align:center;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+width:76px;
+min-width:76px;
+color:#126b3a;
+font-size:14px;
+font-weight:800;
+text-align:center;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
 }
-/* =====================================================
-   メーカー
-===================================================== */
+
 .maker{
-    min-width:0;
-    color:#333;
-    font-size:12px;
-    font-weight:700;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+min-width:0;
+color:#333;
+font-size:12px;
+font-weight:700;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
 }
-/* =====================================================
-   商品名
-===================================================== */
+
 .name{
-    min-width:0;
-    color:#333;
-    font-size:12px;
-    font-weight:700;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+min-width:0;
+color:#333;
+font-size:12px;
+font-weight:700;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
 }
-/* =====================================================
-   飛距離・キャリー
-===================================================== */
+
 .distance-value{
-    width:100%;
-    min-width:0;
-    text-align:center;
-    color:#126b3a;
-    font-size:12px;
-    font-weight:700;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    background:#edf7f1;
-    border-radius:6px;
-    padding:7px 1px;
+width:100%;
+min-width:0;
+text-align:center;
+color:#126b3a;
+font-size:12px;
+font-weight:700;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+background:#edf7f1;
+border-radius:6px;
+padding:7px 1px;
 }
-/* =====================================================
-   空表示
-===================================================== */
+
 .empty{
-    text-align:center;
-    padding:50px 20px;
-    color:#777;
+text-align:center;
+padding:50px 20px;
+color:#777;
 }
-/* =====================================================
-   詳細
-===================================================== */
+
 .detail-modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.5);
-    z-index:20;
-    overflow-y:auto;
-    padding:8px;
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+z-index:20;
+overflow-y:auto;
+padding:8px;
 }
 .detail-content{
-    max-width:650px;
-    margin:4px auto;
-    background:white;
-    border-radius:15px;
-    overflow:hidden;
+max-width:650px;
+margin:4px auto;
+background:white;
+border-radius:15px;
+overflow:hidden;
 }
 .detail-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:8px;
-    padding:10px;
-    border-bottom:1px solid #eee;
-    position:sticky;
-    top:0;
-    background:white;
-    z-index:2;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:8px;
+padding:10px;
+border-bottom:1px solid #eee;
+position:sticky;
+top:0;
+background:white;
+z-index:2;
 }
 .detail-header h2{
-    margin:0;
-    font-size:18px;
-    white-space:nowrap;
+margin:0;
+font-size:18px;
+white-space:nowrap;
 }
 .edit-top-button{
-    background:#126b3a;
-    color:white;
-    padding:8px 13px;
-    white-space:nowrap;
+background:#126b3a;
+color:white;
+padding:8px 13px;
+white-space:nowrap;
 }
 .detail-photo{
-    width:100%;
-    max-height:300px;
-    object-fit:contain;
-    background:#eee;
+width:100%;
+max-height:300px;
+object-fit:contain;
+background:#eee;
 }
 .detail-no-photo{
-    height:180px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#e9eceb;
-    font-size:60px;
+height:180px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#e9eceb;
+font-size:60px;
 }
+
+/* ★ 詳細画面の下側余白を縮小 */
 .detail-body{
-    padding:15px;
+padding:15px;
+padding-bottom:5px;
 }
+
 .detail-title{
-    color:#126b3a;
-    font-size:30px;
-    font-weight:900;
+color:#126b3a;
+font-size:30px;
+font-weight:900;
 }
 .detail-maker{
-    color:#777;
-    margin-top:3px;
+color:#777;
+margin-top:3px;
 }
 .detail-name{
-    font-size:21px;
-    font-weight:800;
-    margin:5px 0 15px;
+font-size:21px;
+font-weight:800;
+margin:5px 0 15px;
 }
 .detail-distance{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-    margin-bottom:16px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+margin-bottom:16px;
 }
 .big-distance{
-    background:#edf7f1;
-    border-radius:10px;
-    padding:12px;
-    text-align:center;
+background:#edf7f1;
+border-radius:10px;
+padding:12px;
+text-align:center;
 }
 .big-distance small{
-    display:block;
-    color:#666;
+display:block;
+color:#666;
 }
 .big-distance strong{
-    display:block;
-    color:#126b3a;
-    font-size:23px;
-    margin-top:3px;
+display:block;
+color:#126b3a;
+font-size:23px;
+margin-top:3px;
 }
-/* =====================================================
-   スペック見出し
-===================================================== */
+
+/* ★ スペック見出し */
 .spec-section-title{
-    margin:18px 0 8px;
-    padding:8px 10px;
-    background:#126b3a;
-    color:white;
-    border-radius:8px;
-    font-size:15px;
-    font-weight:800;
+margin:18px 0 3px;
+padding:8px 10px;
+background:#126b3a;
+color:white;
+border-radius:8px;
+font-size:15px;
+font-weight:800;
 }
-/* =====================================================
-   スペック
-===================================================== */
+
 .detail-specs{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:7px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:7px;
 }
 .detail-spec{
-    background:#f5f6f6;
-    border-radius:8px;
-    padding:9px;
-    min-width:0;
+background:#f5f6f6;
+border-radius:8px;
+padding:9px;
+min-width:0;
 }
 .detail-spec small{
-    display:block;
-    color:#777;
-    font-size:11px;
+display:block;
+color:#777;
+font-size:11px;
 }
 .detail-spec strong{
-    display:block;
-    margin-top:2px;
-    font-size:14px;
-    word-break:break-word;
+display:block;
+margin-top:2px;
+font-size:14px;
+word-break:break-word;
 }
+
 /* =====================================================
-   メモ
+メモ
 ===================================================== */
 .detail-memo{
-    background:#fffbe8;
-    padding:3px 12px;
-    border-radius:9px;
-    margin-top:5px;
-    margin-bottom:0;
-    white-space:normal;
-    text-align:left;
-    text-indent:0;
-    line-height:1.2;
-    word-break:break-word;
-    overflow-wrap:anywhere;
+background:#fffbe8;
+padding:3px 12px;
+border-radius:9px;
+
+/* 上下の外側余白をなくす */
+margin-top:0;
+margin-bottom:0;
+white-space:normal;
+text-align:left;
+text-indent:0;
+line-height:1.2;
+word-break:break-word;
+overflow-wrap:anywhere;
+
 }
 
 .detail-memo .memo-line{
-    display:block;
-    margin:0;
-    padding:0;
-    text-indent:0;
-    line-height:1.2;
-    white-space:pre-wrap;
+display:block;
+margin:0;
+padding:0;
+text-indent:0;
+line-height:1.2;
+white-space:pre-wrap;
 }
+
 /* =====================================================
-   編集
+編集
 ===================================================== */
 .modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.5);
-    z-index:30;
-    overflow-y:auto;
-    padding:8px;
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+z-index:30;
+overflow-y:auto;
+padding:8px;
 }
 .modal-content{
-    max-width:700px;
-    margin:4px auto;
-    background:white;
-    border-radius:15px;
-    padding:15px;
+max-width:700px;
+margin:4px auto;
+background:white;
+border-radius:15px;
+padding:15px;
 }
 .modal h2{
-    margin:0 0 15px;
+margin:0 0 15px;
 }
 .form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
 }
 .form-group{
-    margin-bottom:8px;
+margin-bottom:8px;
 }
 .form-group label{
-    display:block;
-    font-size:12px;
-    color:#555;
-    margin-bottom:4px;
+display:block;
+font-size:12px;
+color:#555;
+margin-bottom:4px;
 }
 .full{
-    grid-column:1/-1;
+grid-column:1/-1;
 }
 .preview{
-    width:100%;
-    max-height:220px;
-    object-fit:contain;
-    border-radius:9px;
-    margin-top:8px;
+width:100%;
+max-height:220px;
+object-fit:contain;
+border-radius:9px;
+margin-top:8px;
 }
 .modal-actions{
-    display:flex;
-    gap:8px;
-    margin-top:18px;
+display:flex;
+gap:8px;
+margin-top:18px;
 }
 .modal-actions button{
-    flex:1;
+flex:1;
 }
 .delete-area{
-    margin-top:22px;
-    padding-top:15px;
-    border-top:1px solid #ddd;
+margin-top:22px;
+padding-top:15px;
+border-top:1px solid #ddd;
 }
 .delete-area button{
-    width:100%;
+width:100%;
 }
+
 /* =====================================================
-   選択パネル
+選択パネル
 ===================================================== */
 .choice-panel{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.5);
-    z-index:50;
-    align-items:flex-end;
-    justify-content:center;
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+z-index:50;
+align-items:flex-end;
+justify-content:center;
 }
 .choice-box{
-    width:100%;
-    max-width:600px;
-    background:white;
-    border-radius:18px 18px 0 0;
-    padding:15px;
-    max-height:75vh;
-    overflow-y:auto;
+width:100%;
+max-width:600px;
+background:white;
+border-radius:18px 18px 0 0;
+padding:15px;
+max-height:75vh;
+overflow-y:auto;
 }
 .choice-box h3{
-    margin:0 0 12px;
-    text-align:center;
+margin:0 0 12px;
+text-align:center;
 }
 .choice-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:7px;
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:7px;
 }
 .choice-button{
-    background:#edf7f1;
-    color:#126b3a;
-    font-weight:700;
-    padding:11px 4px;
+background:#edf7f1;
+color:#126b3a;
+font-weight:700;
+padding:11px 4px;
 }
 .keypad{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-    margin-top:10px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:8px;
+margin-top:10px;
 }
 .key{
-    background:#f0f2f1;
-    font-size:20px;
-    font-weight:700;
-    padding:15px;
+background:#f0f2f1;
+font-size:20px;
+font-weight:700;
+padding:15px;
 }
 .key-wide{
-    grid-column:span 2;
+grid-column:span 2;
 }
 .key-ok{
-    background:#126b3a;
-    color:white;
+background:#126b3a;
+color:white;
 }
 .unit-preview{
-    text-align:center;
-    background:#f5f6f6;
-    border-radius:10px;
-    padding:12px;
-    font-size:25px;
-    font-weight:800;
-    margin-bottom:10px;
+text-align:center;
+background:#f5f6f6;
+border-radius:10px;
+padding:12px;
+font-size:25px;
+font-weight:800;
+margin-bottom:10px;
 }
+
 /* =====================================================
-   iPhone
+iPhone
 ===================================================== */
 @media(max-width:600px){
-    .toolbar{
-        grid-template-columns:minmax(0,1fr) 100px;
-        gap:6px;
-    }
-    .toolbar input{
-        min-width:0;
-        font-size:14px;
-    }
-    .toolbar button{
-        width:100px;
-        padding:9px 4px;
-        font-size:14px;
-        font-weight:700;
-        white-space:nowrap;
-    }
-    .list-header{
-        grid-template-columns:
-            50px
-            76px
-            minmax(0,1fr)
-            minmax(0,1.08fr)
-            62px
-            62px;
-        gap:4px;
-        padding:5px 5px;
-        font-size:11px;
-    }
-    .club-card{
-        grid-template-columns:
-            50px
-            76px
-            minmax(0,1fr)
-            minmax(0,1.08fr)
-            62px
-            62px;
-        gap:4px;
-        padding:4px 5px;
-    }
-    .club-photo,
-    .no-photo{
-        width:50px;
-        height:48px;
-    }
-    .club-type{
-        width:76px;
-        min-width:76px;
-        font-size:14px;
-        font-weight:800;
-    }
-    .maker,
-    .name{
-        font-size:12px;
-        font-weight:700;
-    }
-    .distance-value{
-        font-size:11px;
-        font-weight:700;
-        padding:7px 1px;
-    }
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-    .full{
-        grid-column:auto;
-    }
-    .detail-specs{
-        grid-template-columns:1fr 1fr;
-    }
-    .detail-distance{
-        grid-template-columns:1fr 1fr;
-    }
+.toolbar{
+grid-template-columns:minmax(0,1fr) 100px;
+gap:6px;
 }
+.toolbar input{
+min-width:0;
+font-size:14px;
+}
+.toolbar button{
+width:100px;
+padding:9px 4px;
+font-size:14px;
+font-weight:700;
+white-space:nowrap;
+}
+.list-header{
+grid-template-columns:
+50px
+76px
+minmax(0,1fr)
+minmax(0,1.08fr)
+62px
+62px;
+gap:4px;
+padding:5px 5px;
+font-size:11px;
+}
+.club-card{
+grid-template-columns:
+50px
+76px
+minmax(0,1fr)
+minmax(0,1.08fr)
+62px
+62px;
+gap:4px;
+padding:4px 5px;
+}
+.club-photo,
+.no-photo{
+width:50px;
+height:48px;
+}
+.club-type{
+width:76px;
+min-width:76px;
+font-size:14px;
+font-weight:800;
+}
+.maker,
+.name{
+font-size:12px;
+font-weight:700;
+}
+.distance-value{
+font-size:11px;
+font-weight:700;
+padding:7px 1px;
+}
+.form-grid{
+grid-template-columns:1fr;
+}
+.full{
+grid-column:auto;
+}
+.detail-specs{
+grid-template-columns:1fr 1fr;
+}
+.detail-distance{
+grid-template-columns:1fr 1fr;
+}
+}
+
 /* =====================================================
-   さらに小さいiPhone
+さらに小さいiPhone
 ===================================================== */
 @media(max-width:370px){
-    .toolbar{
-        grid-template-columns:minmax(0,1fr) 96px;
-    }
-    .toolbar button{
-        width:96px;
-        font-size:13px;
-    }
-    .list-header{
-        grid-template-columns:
-            45px
-            71px
-            minmax(0,1fr)
-            minmax(0,1.08fr)
-            58px
-            58px;
-        font-size:10px;
-    }
-    .club-card{
-        grid-template-columns:
-            45px
-            71px
-            minmax(0,1fr)
-            minmax(0,1.08fr)
-            58px
-            58px;
-    }
-    .club-photo,
-    .no-photo{
-        width:45px;
-        height:44px;
-    }
-    .club-type{
-        width:71px;
-        min-width:71px;
-        font-size:13px;
-    }
-    .maker,
-    .name{
-        font-size:11px;
-        font-weight:700;
-    }
-    .distance-value{
-        font-size:10px;
-    }
+.toolbar{
+grid-template-columns:minmax(0,1fr) 96px;
 }
-</style>
+.toolbar button{
+width:96px;
+font-size:13px;
+}
+.list-header{
+grid-template-columns:
+45px
+71px
+minmax(0,1fr)
+minmax(0,1.08fr)
+58px
+58px;
+font-size:10px;
+}
+.club-card{
+grid-template-columns:
+45px
+71px
+minmax(0,1fr)
+minmax(0,1.08fr)
+58px
+58px;
+}
+.club-photo,
+.no-photo{
+width:45px;
+height:44px;
+}
+.club-type{
+width:71px;
+min-width:71px;
+font-size:13px;
+}
+.maker,
+.name{
+font-size:11px;
+font-weight:700;
+}
+.distance-value{
+font-size:10px;
+}
+}
 </head>
 <body>
 <header>
@@ -696,24 +681,24 @@ button{
     class="detail-modal"
 >
 <div class="detail-content">
-    <div class="detail-header">
-        <button
-            class="secondary"
-            onclick="closeDetail()"
-        >
-            ← 戻る
-        </button>
-        <h2>
-            クラブ詳細
-        </h2>
-        <button
-            id="detailEditButton"
-            class="edit-top-button"
-        >
-            編集
-        </button>
-    </div>
-    <div id="detailContent"></div>
+<div class="detail-header">
+    <button
+        class="secondary"
+        onclick="closeDetail()"
+    >
+        ← 戻る
+    </button>
+    <h2>
+        クラブ詳細
+    </h2>
+    <button
+        id="detailEditButton"
+        class="edit-top-button"
+    >
+        編集
+    </button>
+</div>
+<div id="detailContent"></div>
 </div>
 </div>
 <!-- =====================================================
@@ -724,291 +709,251 @@ button{
     class="modal"
 >
 <div class="modal-content">
-    <h2 id="modalTitle">
-        新しいクラブ
-    </h2>
-    <div class="form-grid">
-        <div class="form-group">
-            <label>
-                番手
-            </label>
-            <select id="clubType">
-                <option>1W</option>
-                <option>2W</option>
-                <option>3W</option>
-                <option>4W</option>
-                <option>5W</option>
-                <option>7W</option>
-                <option>9W</option>
-                <option>2U</option>
-                <option>3U</option>
-                <option>4U</option>
-                <option>5U</option>
-                <option>6U</option>
-                <option>1I</option>
-                <option>2I</option>
-                <option>3I</option>
-                <option>4I</option>
-                <option>5I</option>
-                <option>6I</option>
-                <option>7I</option>
-                <option>8I</option>
-                <option>9I</option>
-                <option>PW</option>
-                <option>AW</option>
-                <option>SW</option>
-                <option>LW</option>
-                <option>チッパー</option>
-                <option>パター</option>
-                <option>その他</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>
-                メーカー
-            </label>
-            <input
-                id="maker"
-                placeholder="例：TaylorMade"
-            >
-        </div>
-        <div class="form-group full">
-            <label>
-                商品名
-            </label>
-            <input
-                id="name"
-                placeholder="例：Qi35"
-            >
-        </div>
-        <div class="form-group">
-            <label>
-                総飛距離
-            </label>
-            <button
-                type="button"
-                class="secondary"
-                style="width:100%;"
-                onclick="openDistancePicker('distance')"
-                id="distanceButton"
-            >
-                選択してください
-            </button>
-        </div>
-        <div class="form-group">
-            <label>
-                キャリー
-            </label>
-            <button
-                type="button"
-                class="secondary"
-                style="width:100%;"
-                onclick="openDistancePicker('carry')"
-                id="carryButton"
-            >
-                選択してください
-            </button>
-        </div>
-        <div class="form-group">
-            <label>
-                クラブ重量
-            </label>
-            <button
-                type="button"
-                class="secondary"
-                style="width:100%;"
-                onclick="openNumberPicker('clubWeight','クラブ重量','g')"
-                id="clubWeightButton"
-            >
-                数字キーで入力
-            </button>
-        </div>
-        <div class="form-group">
-            <label>
-                クラブ長さ
-            </label>
-            <button
-                type="button"
-                class="secondary"
-                style="width:100%;"
-                onclick="openNumberPicker('clubLength','クラブ長さ','inch')"
-                id="clubLengthButton"
-            >
-                数字キーで入力
-            </button>
-        </div>
-        <div class="form-group">
-            <label>
-                ロフト角
-            </label>
-            <button
-                type="button"
-                class="secondary"
-                style="width:100%;"
-                onclick="openNumberPicker('loft','ロフト角','°')"
-                id="loftButton"
-            >
-                数字キーで入力
-            </button>
-        </div>
-        <div class="form-group">
-            <label>
-                ライ角
-            </label>
-            <button
-                type="button"
-                class="secondary"
-                style="width:100%;"
-                onclick="openNumberPicker('lieAngle','ライ角','°')"
-                id="lieAngleButton"
-            >
-                数字キーで入力
-            </button>
-        </div>
-        <div class="form-group">
-            <label>
-                バンス角
-            </label>
-            <button
-                type="button"
-                class="secondary"
-                style="width:100%;"
-                onclick="openNumberPicker('bounce','バンス角','°')"
-                id="bounceButton"
-            >
-                数字キーで入力
-            </button>
-        </div>
-        <div class="form-group">
-            <label>
-                シャフト名
-            </label>
-            <input
-                id="shaft"
-                placeholder="例：VENTUS TR"
-            >
-        </div>
-        <div class="form-group">
-            <label>
-                フレックス
-            </label>
-            <select id="flex">
-                <option>R2</option>
-                <option>R</option>
-                <option>SR</option>
-                <option selected>
-                    S
-                </option>
-                <option>SX</option>
-                <option>X</option>
-                <option>TX</option>
-                <option>その他</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>
-                シャフト重量
-            </label>
-            <button
-                type="button"
-                class="secondary"
-                style="width:100%;"
-                onclick="openNumberPicker('shaftWeight','シャフト重量','g')"
-                id="shaftWeightButton"
-            >
-                数字キーで入力
-            </button>
-        </div>
-        <div class="form-group">
-            <label>
-                シャフト長さ
-            </label>
-            <button
-                type="button"
-                class="secondary"
-                style="width:100%;"
-                onclick="openNumberPicker('shaftLength','シャフト長さ','inch')"
-                id="shaftLengthButton"
-            >
-                数字キーで入力
-            </button>
-        </div>
-        <div class="form-group">
-            <label>
-                キックポイント
-            </label>
-            <select id="kickPoint">
-                <option>元調子</option>
-                <option>中元調子</option>
-                <option selected>
-                    中調子
-                </option>
-                <option>先中調子</option>
-                <option>先調子</option>
-                <option>その他</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>
-                グリップ交換日
-            </label>
-            <input
-                id="gripDate"
-                type="date"
-            >
-        </div>
-        <div class="form-group full">
-            <label>
-                クラブ写真
-            </label>
-            <input
-                id="photo"
-                type="file"
-                accept="image/*"
-            >
-            <img
-                id="preview"
-                class="preview"
-                style="display:none;"
-            >
-        </div>
-        <div class="form-group full">
-            <label>
-                メモ
-            </label>
-            <textarea
-                id="memo"
-                rows="4"
-                placeholder="クラブについてのメモ"
-            ></textarea>
-        </div>
+<h2 id="modalTitle">
+    新しいクラブ
+</h2>
+<div class="form-grid">
+    <div class="form-group">
+        <label>番手</label>
+        <select id="clubType">
+            <option>1W</option>
+            <option>2W</option>
+            <option>3W</option>
+            <option>4W</option>
+            <option>5W</option>
+            <option>7W</option>
+            <option>9W</option>
+            <option>2U</option>
+            <option>3U</option>
+            <option>4U</option>
+            <option>5U</option>
+            <option>6U</option>
+            <option>1I</option>
+            <option>2I</option>
+            <option>3I</option>
+            <option>4I</option>
+            <option>5I</option>
+            <option>6I</option>
+            <option>7I</option>
+            <option>8I</option>
+            <option>9I</option>
+            <option>PW</option>
+            <option>AW</option>
+            <option>SW</option>
+            <option>LW</option>
+            <option>チッパー</option>
+            <option>パター</option>
+            <option>その他</option>
+        </select>
     </div>
-    <div class="modal-actions">
+    <div class="form-group">
+        <label>メーカー</label>
+        <input
+            id="maker"
+            placeholder="例：TaylorMade"
+        >
+    </div>
+    <div class="form-group full">
+        <label>商品名</label>
+        <input
+            id="name"
+            placeholder="例：Qi35"
+        >
+    </div>
+    <div class="form-group">
+        <label>総飛距離</label>
         <button
+            type="button"
             class="secondary"
-            onclick="closeModal()"
+            style="width:100%;"
+            onclick="openDistancePicker('distance')"
+            id="distanceButton"
         >
-            キャンセル
-        </button>
-        <button
-            class="primary"
-            onclick="saveClub()"
-        >
-            保存
+            選択してください
         </button>
     </div>
-    <div
-        id="deleteArea"
-        class="delete-area"
-        style="display:none;"
+    <div class="form-group">
+        <label>キャリー</label>
+        <button
+            type="button"
+            class="secondary"
+            style="width:100%;"
+            onclick="openDistancePicker('carry')"
+            id="carryButton"
+        >
+            選択してください
+        </button>
+    </div>
+    <div class="form-group">
+        <label>クラブ重量</label>
+        <button
+            type="button"
+            class="secondary"
+            style="width:100%;"
+            onclick="openNumberPicker('clubWeight','クラブ重量','g')"
+            id="clubWeightButton"
+        >
+            数字キーで入力
+        </button>
+    </div>
+    <div class="form-group">
+        <label>クラブ長さ</label>
+        <button
+            type="button"
+            class="secondary"
+            style="width:100%;"
+            onclick="openNumberPicker('clubLength','クラブ長さ','inch')"
+            id="clubLengthButton"
+        >
+            数字キーで入力
+        </button>
+    </div>
+    <div class="form-group">
+        <label>ロフト角</label>
+        <button
+            type="button"
+            class="secondary"
+            style="width:100%;"
+            onclick="openNumberPicker('loft','ロフト角','°')"
+            id="loftButton"
+        >
+            数字キーで入力
+        </button>
+    </div>
+    <div class="form-group">
+        <label>ライ角</label>
+        <button
+            type="button"
+            class="secondary"
+            style="width:100%;"
+            onclick="openNumberPicker('lieAngle','ライ角','°')"
+            id="lieAngleButton"
+        >
+            数字キーで入力
+        </button>
+    </div>
+    <div class="form-group">
+        <label>バンス角</label>
+        <button
+            type="button"
+            class="secondary"
+            style="width:100%;"
+            onclick="openNumberPicker('bounce','バンス角','°')"
+            id="bounceButton"
+        >
+            数字キーで入力
+        </button>
+    </div>
+    <div class="form-group">
+        <label>シャフト名</label>
+        <input
+            id="shaft"
+            placeholder="例：VENTUS TR"
+        >
+    </div>
+    <div class="form-group">
+        <label>フレックス</label>
+        <select id="flex">
+            <option>R2</option>
+            <option>R</option>
+            <option>SR</option>
+            <option selected>S</option>
+            <option>SX</option>
+            <option>X</option>
+            <option>TX</option>
+            <option>その他</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>シャフト重量</label>
+        <button
+            type="button"
+            class="secondary"
+            style="width:100%;"
+            onclick="openNumberPicker('shaftWeight','シャフト重量','g')"
+            id="shaftWeightButton"
+        >
+            数字キーで入力
+        </button>
+    </div>
+    <div class="form-group">
+        <label>シャフト長さ</label>
+        <button
+            type="button"
+            class="secondary"
+            style="width:100%;"
+            onclick="openNumberPicker('shaftLength','シャフト長さ','inch')"
+            id="shaftLengthButton"
+        >
+            数字キーで入力
+        </button>
+    </div>
+    <div class="form-group">
+        <label>キックポイント</label>
+        <select id="kickPoint">
+            <option>元調子</option>
+            <option>中元調子</option>
+            <option selected>中調子</option>
+            <option>先中調子</option>
+            <option>先調子</option>
+            <option>その他</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>グリップ交換日</label>
+        <input
+            id="gripDate"
+            type="date"
+        >
+    </div>
+    <div class="form-group full">
+        <label>クラブ写真</label>
+        <input
+            id="photo"
+            type="file"
+            accept="image/*"
+        >
+        <img
+            id="preview"
+            class="preview"
+            style="display:none;"
+        >
+    </div>
+    <div class="form-group full">
+        <label>メモ</label>
+        <textarea
+            id="memo"
+            rows="4"
+            placeholder="クラブについてのメモ"
+        ></textarea>
+    </div>
+</div>
+<div class="modal-actions">
+    <button
+        class="secondary"
+        onclick="closeModal()"
     >
-        <button
-            class="danger"
-            onclick="deleteCurrentClub()"
-        >
-            🗑️ このクラブを削除
-        </button>
-    </div>
+        キャンセル
+    </button>
+    <button
+        class="primary"
+        onclick="saveClub()"
+    >
+        保存
+    </button>
+</div>
+<div
+    id="deleteArea"
+    class="delete-area"
+    style="display:none;"
+>
+    <button
+        class="danger"
+        onclick="deleteCurrentClub()"
+    >
+        🗑️ このクラブを削除
+    </button>
+</div>
 </div>
 </div>
 <!-- =====================================================
@@ -1019,20 +964,20 @@ button{
     class="choice-panel"
 >
 <div class="choice-box">
-    <h3 id="distancePickerTitle">
-        飛距離を選択
-    </h3>
-    <div
-        id="distanceChoices"
-        class="choice-grid"
-    ></div>
-    <button
-        class="secondary"
-        style="width:100%;margin-top:10px;"
-        onclick="closePicker('distancePicker')"
-    >
-        キャンセル
-    </button>
+<h3 id="distancePickerTitle">
+    飛距離を選択
+</h3>
+<div
+    id="distanceChoices"
+    class="choice-grid"
+></div>
+<button
+    class="secondary"
+    style="width:100%;margin-top:10px;"
+    onclick="closePicker('distancePicker')"
+>
+    キャンセル
+</button>
 </div>
 </div>
 <!-- =====================================================
@@ -1043,54 +988,51 @@ button{
     class="choice-panel"
 >
 <div class="choice-box">
-    <h3 id="numberPickerTitle">
-        数字を入力
-    </h3>
-    <div
-        id="numberPreview"
-        class="unit-preview"
-    >
-        0
-    </div>
-    <div class="keypad">
-        <button class="key" onclick="pressKey('1')">1</button>
-        <button class="key" onclick="pressKey('2')">2</button>
-        <button class="key" onclick="pressKey('3')">3</button>
-        <button class="key" onclick="pressKey('4')">4</button>
-        <button class="key" onclick="pressKey('5')">5</button>
-        <button class="key" onclick="pressKey('6')">6</button>
-        <button class="key" onclick="pressKey('7')">7</button>
-        <button class="key" onclick="pressKey('8')">8</button>
-        <button class="key" onclick="pressKey('9')">9</button>
-        <button class="key" onclick="pressKey('.')">.</button>
-        <button class="key" onclick="pressKey('0')">0</button>
-        <button class="key" onclick="backspaceKey()">⌫</button>
-        <button
-            class="key key-wide"
-            onclick="clearNumber()"
-        >
-            クリア
-        </button>
-        <button
-            class="key key-ok"
-            onclick="confirmNumber()"
-        >
-            決定
-        </button>
-    </div>
+<h3 id="numberPickerTitle">
+    数字を入力
+</h3>
+<div
+    id="numberPreview"
+    class="unit-preview"
+>
+    0
+</div>
+<div class="keypad">
+    <button class="key" onclick="pressKey('1')">1</button>
+    <button class="key" onclick="pressKey('2')">2</button>
+    <button class="key" onclick="pressKey('3')">3</button>
+    <button class="key" onclick="pressKey('4')">4</button>
+    <button class="key" onclick="pressKey('5')">5</button>
+    <button class="key" onclick="pressKey('6')">6</button>
+    <button class="key" onclick="pressKey('7')">7</button>
+    <button class="key" onclick="pressKey('8')">8</button>
+    <button class="key" onclick="pressKey('9')">9</button>
+    <button class="key" onclick="pressKey('.')">.</button>
+    <button class="key" onclick="pressKey('0')">0</button>
+    <button class="key" onclick="backspaceKey()">⌫</button>
     <button
-        class="secondary"
-        style="width:100%;margin-top:10px;"
-        onclick="closePicker('numberPicker')"
+        class="key key-wide"
+        onclick="clearNumber()"
     >
-        キャンセル
+        クリア
     </button>
+    <button
+        class="key key-ok"
+        onclick="confirmNumber()"
+    >
+        決定
+    </button>
+</div>
+<button
+    class="secondary"
+    style="width:100%;margin-top:10px;"
+    onclick="closePicker('numberPicker')"
+>
+    キャンセル
+</button>
 </div>
 </div>
 <script>
-/* =====================================================
-   データ
-===================================================== */
 let clubs=[];
 let editingId=null;
 let currentPhoto=null;
@@ -1098,9 +1040,6 @@ const STORAGE_KEY="golfClubManagerData";
 let currentNumberField=null;
 let currentNumberUnit="";
 let currentNumberValue="";
-/* =====================================================
-   番手の並び順
-===================================================== */
 const clubOrder=[
     "1W",
     "2W",
@@ -1132,24 +1071,17 @@ const clubOrder=[
     "その他"
 ];
 function getClubOrder(type){
-    const index=
-        clubOrder.indexOf(type);
+    const index=clubOrder.indexOf(type);
     return index===-1
         ?999
         :index;
 }
-/* =====================================================
-   保存
-===================================================== */
 function saveData(){
     localStorage.setItem(
         STORAGE_KEY,
         JSON.stringify(clubs)
     );
 }
-/* =====================================================
-   読み込み
-===================================================== */
 function loadData(){
     const saved=
         localStorage.getItem(
@@ -1157,17 +1089,13 @@ function loadData(){
         );
     if(saved){
         try{
-            clubs=
-                JSON.parse(saved);
+            clubs=JSON.parse(saved);
         }catch{
             clubs=[];
         }
     }
     renderClubs();
 }
-/* =====================================================
-   一覧
-===================================================== */
 function renderClubs(){
     const grid=
         document.getElementById(
@@ -1283,9 +1211,6 @@ function renderClubs(){
             })
             .join("");
 }
-/* =====================================================
-   詳細画面
-===================================================== */
 function openDetail(id){
     const club=
         clubs.find(
@@ -1433,9 +1358,6 @@ function openDetail(id){
         "detailModal"
     ).style.display="block";
 }
-/* =====================================================
-   詳細スペック
-===================================================== */
 function detailSpec(title,value){
     return`
         <div class="detail-spec">
@@ -1450,11 +1372,6 @@ function detailSpec(title,value){
         </div>
     `;
 }
-/* =====================================================
-   ★ メモ表示
-   各行の先頭の余計な空白を除去して
-   全行の開始位置を揃える
-===================================================== */
 function formatMemo(value){
     return String(value)
         .split(/\r?\n/)
@@ -1468,9 +1385,6 @@ function closeDetail(){
         "detailModal"
     ).style.display="none";
 }
-/* =====================================================
-   新規追加
-===================================================== */
 function openAddModal(){
     editingId=null;
     currentPhoto=null;
@@ -1488,9 +1402,6 @@ function openAddModal(){
     ).style.display=
         "block";
 }
-/* =====================================================
-   編集
-===================================================== */
 function openEditModal(id){
     const club=
         clubs.find(
@@ -1616,9 +1527,6 @@ function setButtonValue(
     ).textContent=
         value||emptyText;
 }
-/* =====================================================
-   フォーム初期化
-===================================================== */
 function clearForm(){
     document.getElementById(
         "clubType"
@@ -1688,9 +1596,6 @@ function clearForm(){
     ).style.display=
         "none";
 }
-/* =====================================================
-   保存
-===================================================== */
 function saveClub(){
     const data={
         clubType:
@@ -1786,9 +1691,6 @@ function saveClub(){
     renderClubs();
     closeModal();
 }
-/* =====================================================
-   ボタンの値
-===================================================== */
 function getButtonValue(id){
     const value=
         document.getElementById(
@@ -1802,9 +1704,6 @@ function getButtonValue(id){
     }
     return value;
 }
-/* =====================================================
-   写真
-===================================================== */
 document.getElementById(
     "photo"
 ).addEventListener(
@@ -1830,9 +1729,6 @@ document.getElementById(
         reader.readAsDataURL(file);
     }
 );
-/* =====================================================
-   飛距離
-===================================================== */
 function openDistancePicker(field){
     document.getElementById(
         "distancePickerTitle"
@@ -1880,9 +1776,6 @@ function selectDistance(
         "distancePicker"
     );
 }
-/* =====================================================
-   数字キー
-===================================================== */
 function openNumberPicker(
     field,
     title,
@@ -1975,9 +1868,6 @@ function confirmNumber(){
         "numberPicker"
     );
 }
-/* =====================================================
-   閉じる
-===================================================== */
 function closePicker(id){
     document.getElementById(
         id
@@ -1990,9 +1880,6 @@ function closeModal(){
     ).style.display=
         "none";
 }
-/* =====================================================
-   削除
-===================================================== */
 function deleteCurrentClub(){
     if(!editingId)return;
     const club=
@@ -2016,18 +1903,12 @@ function deleteCurrentClub(){
     renderClubs();
     closeModal();
 }
-/* =====================================================
-   検索
-===================================================== */
 document.getElementById(
     "search"
 ).addEventListener(
     "input",
     renderClubs
 );
-/* =====================================================
-   HTMLエスケープ
-===================================================== */
 function escapeHTML(value){
     return String(value)
         .replaceAll(
@@ -2051,9 +1932,6 @@ function escapeHTML(value){
             "&#039;"
         );
 }
-/* =====================================================
-   起動
-===================================================== */
 loadData();
 </script>
 </body>
